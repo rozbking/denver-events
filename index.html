@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Denver Events: Feb 24 – March 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #16171d;
+      --surface: #1e1f28;
+      --surface2: #25262f;
+      --text: #e4e4e7;
+      --text-dim: #a1a1aa;
+      --accent: #e8c547;
+      --green: #6ee7b7;
+      --blue: #60a5fa;
+      --purple: #b088e8;
+      --orange: #fb923c;
+      --pink: #ec4899;
+      --locked: #71717a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
+    h1 {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.5rem;
+      color: var(--green);
+      margin-top: 48px;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #2e3345;
+    }
+    h3 {
+      font-size: 1.15rem;
+      color: var(--blue);
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+    }
+    .week-label {
+      font-size: 1.05rem;
+      color: var(--blue);
+      margin-bottom: 16px;
+      margin-top: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #2e3345;
+      font-family: 'Playfair Display', serif;
+    }
+    .day {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--surface2);
+    }
+    .day-label {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: var(--purple);
+      color: var(--bg);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .badge.committed { background: var(--orange); }
+    .badge.recurring { background: var(--locked); opacity: 0.7; }
+    .badge.first-friday { background: var(--pink); }
+    .badge.slow-night { background: #4ade80; color: #16171d; }
+    .event {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 6px;
+      background: var(--surface2);
+      transition: all 0.2s;
+    }
+    .event:hover {
+      background: #2a2b34;
+      transform: translateX(2px);
+    }
+    .event.top-pick {
+      background: linear-gradient(135deg, rgba(232,197,71,0.15) 0%, var(--surface2) 100%);
+      border: 1px solid rgba(232,197,71,0.3);
+    }
+    .event-cat {
+      width: 4px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .cat-top { background: var(--accent); }
+    .cat-good { background: var(--green); }
+    .cat-maybe { background: var(--purple); }
+    .cat-meh { background: var(--text-dim); opacity: 0.4; }
+    .event-body { flex: 1; }
+    .event-name {
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .event-detail {
+      color: var(--text-dim);
+      font-size: 0.82rem;
+    }
+    .roll-table {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+    .roll-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .roll-table th,
+    .roll-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #2e3345;
+    }
+    .roll-table th {
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .roll-table td:first-child {
+      color: var(--purple);
+      font-weight: 500;
+      width: 60px;
+    }
+    .museum-table {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+      overflow-x: auto;
+    }
+    .museum-table table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+    .museum-table th,
+    .museum-table td {
+      padding: 9px 10px;
+      text-align: left;
+      border-bottom: 1px solid #2e3345;
+      font-size: 0.85rem;
+    }
+    .museum-table th {
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .museum-table td:first-child {
+      color: var(--purple);
+      font-weight: 500;
+      width: 30px;
+    }
+    .museum-table td:nth-child(2) { color: var(--text); font-weight: 500; }
+    .museum-table td:nth-child(3) { color: var(--blue); }
+    .museum-table td:nth-child(4) { color: var(--text-dim); font-size: 0.78rem; }
+    .museum-table td:nth-child(5) { color: var(--green); }
+    .museum-table td:nth-child(6) { color: var(--text-dim); font-size: 0.78rem; }
+    .trip-card {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--blue);
+    }
+    .trip-title {
+      color: var(--accent);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .trip-dates {
+      color: var(--blue);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .trip-details {
+      color: var(--text-dim);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .ongoing-section {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 32px;
+    }
+    .ongoing-category { margin-bottom: 20px; }
+    .ongoing-category h3 {
+      color: var(--purple);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    .ongoing-item {
+      padding: 6px 0;
+      display: flex;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+    .ongoing-item strong {
+      color: var(--text);
+      min-width: 220px;
+    }
+    .ongoing-item span { color: var(--text-dim); }
+    .legend {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 24px 0;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; }
+    .legend-color { width: 16px; height: 16px; border-radius: 3px; }
+    .tip-box {
+      background: var(--surface);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+    .tip-box strong { color: var(--accent); }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid #2e3345;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎭 Denver Events Guide</h1>
+  <div class="subtitle">Feb 24 – March 2026 · Concerts · Date Ideas · Museums · Roll Table<br>
+  Updated Feb 24, 2026</div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-color cat-top"></div><span>Must-See / Top Picks</span></div>
+    <div class="legend-item"><div class="legend-color cat-good"></div><span>Excellent Options</span></div>
+    <div class="legend-item"><div class="legend-color cat-maybe"></div><span>Worth Considering</span></div>
+    <div class="legend-item"><div class="legend-color cat-meh"></div><span>Lower Priority</span></div>
+  </div>
+
+  <div class="tip-box">
+    <strong>🔁 Recurring commitments:</strong> Curling Sun 7–10pm (Golden) · Bowling Wed ~6pm+ (Cherry Creek) · Off the Cuff Wed 9pm–1:30am Meadowlark Bar (go after bowling or when league ends!) · First Fridays monthly · Adams Mystery Playhouse: Fri & Sat 6pm (check calendar)
+  </div>
+
+
+  <!-- ═══════════════════ WEEK OF FEB 24 ═══════════════════ -->
+  <h2>📅 Late February · Feb 24–28</h2>
+  <div class="week-label">Week 4 · Feb 24–28</div>
+
+  <div class="day">
+    <div class="day-label">Tuesday, Feb 24</div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">QTs & Cuties Open Mic Safe Space</div>
+        <div class="event-detail">Fiction Beer Co. · LGBTQ+ comedy open mic</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Art of Hospitality with Danny Meyer</div>
+        <div class="event-detail">Sturm Hall DU Campus · EatDenver event</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Black To The Outdoors Symposium</div>
+        <div class="event-detail">Denver Museum of Nature & Science · Black History Month</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Wednesday, Feb 25 <span class="badge recurring">bowling night</span></div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Off the Cuff (after bowling)</div>
+        <div class="event-detail">Meadowlark Bar · 9pm–1:30am · Improv music · STELLAR</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Choir League: Songs in the Dark</div>
+        <div class="event-detail">Bug Theatre · 7pm · Intimate concert in the dark</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Civic Center Stargaze</div>
+        <div class="event-detail">Civic Center Park · AstroTours + food trucks</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Handmade Pasta & Marinara Class</div>
+        <div class="event-detail">Junction Food & Drink · Cocuso Social</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Backcountry Film Festival</div>
+        <div class="event-detail">Patagonia Denver · Outdoor adventure films</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Reading Den with Local Authors</div>
+        <div class="event-detail">Fort Greene</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Thursday, Feb 26</div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ EXPOSED: Fire in the Meth Lab</div>
+        <div class="event-detail">Bug Theatre · 7:30pm · Award-winning solo show by Jon Bennett</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fossils Beneath Your Feet</div>
+        <div class="event-detail">Social Study · 7pm · Paleontology talk</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Papercraft: Book Arts</div>
+        <div class="event-detail">DAM Creative Hub · 1:30pm · Multi-week series starts</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Don't Tell Comedy at Broderick</div>
+        <div class="event-detail">Washington Park · Secret show</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Ceramic Clocks Workshop</div>
+        <div class="event-detail">Community Clay RiNo · Beginner-friendly, no wheel needed</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Friday, Feb 27</div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ NERD NITE: Parasitic Worms, Digimon & Bacteria</div>
+        <div class="event-detail">Bug Theatre · 7pm · Discovery Channel live with beer!</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Gogol Bordello</div>
+        <div class="event-detail">Ogden Theatre · High-energy gypsy punk</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Drama</div>
+        <div class="event-detail">Mission Ballroom</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">umru & Petal Supply</div>
+        <div class="event-detail">Meow Wolf</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">CORDUROY: Pearl Jam 10th Anniversary</div>
+        <div class="event-detail">Oriental Theater · 8pm · 90s grunge tribute</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Don't Tell Comedy</div>
+        <div class="event-detail">West Highland · Secret show</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Last Rites</div>
+        <div class="event-detail">Creepatorium · 9pm · Baroque Catholic ritual meets queer vampire drag</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Michelle Buteau: Surviving & Thriving Tour</div>
+        <div class="event-detail">Paramount Theatre · Comedy</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Erykah Badu Birthday Tribute</div>
+        <div class="event-detail">Luckiee B Presents · Live band arrangements</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">⚠️ Slick City Adult Night</div>
+        <div class="event-detail">Lakewood · You have a pass! Check calendar for exact time</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Saturday, Feb 28</div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Colorado Rapids vs. Portland Timbers (Home Opener)</div>
+        <div class="event-detail">Dick's Sporting Goods Park · 2:30pm · Season opener!</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Fashion Archives Conversation</div>
+        <div class="event-detail">DAM · Jill D'Alessandro · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Andrew Norris Demo Artist</div>
+        <div class="event-detail">DAM Cosmic Studio · Studio Saturdays</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">HOT & BOTHERED</div>
+        <div class="event-detail">Creepatorium · 9:30pm · ConSensual Circus kinky cabaret</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">EL TRIBUTO: Pedro Suarez-Vertiz</div>
+        <div class="event-detail">Oriental · 8pm · Rock en Español tribute night</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Mardi Gras Drag Brunch</div>
+        <div class="event-detail">Bierstadt Lagerhaus · Hosted by Talia Tucker L'Whor</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Après at The Terminal Patio Party</div>
+        <div class="event-detail">Terminal Bar · Winter patio vibes</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Arvada Winterfest</div>
+        <div class="event-detail">Arvada</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ MARCH ═══════════════════ -->
+  <h2>📅 March 2026</h2>
+  <div class="week-label">Week 1 · Mar 1–7</div>
+
+  <div class="day">
+    <div class="day-label">Sunday, Mar 1 <span class="badge recurring">curling 7–10pm</span></div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ IDOL WORSHIP: Mink Stole & Peaches Christ</div>
+        <div class="event-detail">Bug Theatre · 7pm · Drag, film clips, scandal, unrepentant camp</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Petite Parade (Mardi Gras)</div>
+        <div class="event-detail">Dairy Block · 12–2pm · Handsome Little Devils · 8th Annual</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Denver Nuggets vs. Minnesota Timberwolves</div>
+        <div class="event-detail">Ball Arena</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Women in Art Spotlight Talk Extravaganza</div>
+        <div class="event-detail">Denver Art Museum · Free with membership · Women's History Month kickoff</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Soul Sunday R&B Brunch</div>
+        <div class="event-detail">Spangalang Brewery · Live band</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Denver Polar Plunge & 5K</div>
+        <div class="event-detail">Presented by Spectrum</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Monday, Mar 2</div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">The Mellow Film Tour</div>
+        <div class="event-detail">Oriental Theater · 7pm · Climbing films, hardest ascents</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Tuesday, Mar 3</div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Logan Lecture: Didier William</div>
+        <div class="event-detail">DAM · Haitian history, language & mythology in art · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Drop-In Drawing with Anna Kaye</div>
+        <div class="event-detail">DAM · In-person drawing session · Free w/ membership</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Wednesday, Mar 4 <span class="badge recurring">bowling night</span></div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Off the Cuff (after bowling)</div>
+        <div class="event-detail">Meadowlark Bar · 9pm–1:30am · Improv music</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Space Weather Impacts Talk</div>
+        <div class="event-detail">Social Study · 7pm · Economic & societal impacts</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Steve Vanderploeg</div>
+        <div class="event-detail">Gnarly's Golden</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Thursday, Mar 5</div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ MCA Spring Exhibitions Opening</div>
+        <div class="event-detail">Museum of Contemporary Art · 7:30pm · $32.77 · New season!</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Don't Tell Comedy at Broderick</div>
+        <div class="event-detail">Washington Park · Thursday recurring</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Friday, Mar 6 <span class="badge first-friday">FIRST FRIDAY</span></div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ FIRST FRIDAY ART WALKS</div>
+        <div class="event-detail">Santa Fe 5:30–9:30pm · RiNo · 40 West · Colfax crawl</div>
+      </div>
+    </div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ DENVER RESTAURANT WEEK begins</div>
+        <div class="event-detail">Mar 6–15 · Prix fixe dinners citywide · Great combo with First Friday!</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">First Friday Art Walk: The Three Leaches</div>
+        <div class="event-detail">The Three Leaches · 5–9pm · Collage by Chant Co-Op + LMK Cards · $5 adults</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Adams Mystery Playhouse</div>
+        <div class="event-detail">6pm · Check calendar · Fri is open! Interactive mystery dinner theater</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">JUMP: America's Van Halen Experience</div>
+        <div class="event-detail">Oriental Theater · 8pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Bierhalle Brawl Wrestling</div>
+        <div class="event-detail">Bierstadt · 8pm · Free</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Saturday, Mar 7</div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">1960s Sing-Along with Larry O'Connor</div>
+        <div class="event-detail">The Three Leaches · 7pm · $10</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Parfleche Painting: Plains Indians Design</div>
+        <div class="event-detail">DAM · Indigenous design practice · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Prints: How Ink & Paper Changed the World</div>
+        <div class="event-detail">DAM · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Adams Mystery Playhouse</div>
+        <div class="event-detail">6pm · Check calendar · Sat is open!</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Rumours: A Fleetwood Mac Tribute</div>
+        <div class="event-detail">Oriental Theater · 7:30pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Tacos, Yoga & Beer</div>
+        <div class="event-detail">River North Blake · 12pm · $17.85</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Ride the Cyclone (Musical)</div>
+        <div class="event-detail">Bug Theatre · 7pm · City Theatre Co · Canadian choir teens die on roller coaster</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="week-label">Week 2 · Mar 8–14</div>
+
+  <div class="day">
+    <div class="day-label">Sunday, Mar 8 <span class="badge recurring">curling 7–10pm</span></div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Yoga at the Downtown Aquarium</div>
+        <div class="event-detail">Downtown Aquarium · 8:30am · Inside the Shark Tank! · $53.07</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Ride the Cyclone (Musical Matinee)</div>
+        <div class="event-detail">Bug Theatre · 2pm · City Theatre Co</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Tuesday, Mar 10</div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">MCA Creators Studio Info Session</div>
+        <div class="event-detail">Museum of Contemporary Art · 5–6:30pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Photography Lecture: Zora J. Murff</div>
+        <div class="event-detail">DAM · Social and racial justice photography · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Frank Turner</div>
+        <div class="event-detail">Oriental Theater · 8pm · (also Tues Mar 10 AND Wed Mar 11)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Wednesday, Mar 11 <span class="badge recurring">bowling night</span></div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Off the Cuff (after bowling)</div>
+        <div class="event-detail">Meadowlark Bar · 9pm–1:30am · Improv music</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Movie Night: Adam, Rory & Ben (Grawlix)</div>
+        <div class="event-detail">Bug Theatre · 7:30pm · Comedians talk over a movie the whole time</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm · Pay-What-You-Can · Novelists + terminal diagnosis</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Frank Turner (second night)</div>
+        <div class="event-detail">Oriental Theater · 8pm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Thursday, Mar 12</div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Sci-Fi Teaches Sanity in Tech World</div>
+        <div class="event-detail">Social Study · 7pm · "The Future Already Happened"</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Don't Tell Comedy at Broderick</div>
+        <div class="event-detail">Washington Park · Thursday recurring</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm · Pay-What-You-Can</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Friday, Mar 13</div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">2nd Annual Lilith Fair Tribute Concert</div>
+        <div class="event-detail">Oriental Theater · 7:30pm · Wendy Woo + 90s women icons</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Adams Mystery Playhouse</div>
+        <div class="event-detail">6pm · Fri is open! Check calendar</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Luke Gaston Stand-Up</div>
+        <div class="event-detail">Gnarly's Golden</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Don't Tell Comedy</div>
+        <div class="event-detail">Five Points · Secret show</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Ride the Cyclone</div>
+        <div class="event-detail">Bug Theatre · 7pm · City Theatre Co</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Saturday, Mar 14</div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Denver St. Patrick's Day Parade</div>
+        <div class="event-detail">Downtown Denver · Biggest parade west of the Mississippi, 64 years!</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Adams Mystery Playhouse</div>
+        <div class="event-detail">6pm · Sat is open! Check calendar</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Demo Artist: Alexa Mae</div>
+        <div class="event-detail">DAM Cosmic Studio · Studio Saturdays · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">2nd Saturdays at CSU Spur</div>
+        <div class="event-detail">CSU Spur · Free and open to public</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">HUMP! Film Fest 2026</div>
+        <div class="event-detail">Oriental Theater · 7pm · Adult indie cinema · Creative short films</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Don't Tell Comedy</div>
+        <div class="event-detail">Capitol Hill · Secret show</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Ride the Cyclone (Matinee + Evening)</div>
+        <div class="event-detail">Bug Theatre · 2pm & 7pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="week-label">Week 3 · Mar 15–21</div>
+
+  <div class="day">
+    <div class="day-label">Sunday, Mar 15 <span class="badge recurring">curling 7–10pm</span></div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">We're All Doing Great And Other Lies</div>
+        <div class="event-detail">Bug Theatre · 7pm · Comedy about life's chaos</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Paint Your Own Pottery</div>
+        <div class="event-detail">MCA · 10:15am · $17.04 · Members discount</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Tuesday, Mar 17 <span class="badge recurring">St. Patrick's Day</span></div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Drawing: Intro to Ink Mediums</div>
+        <div class="event-detail">DAM Creative Hub · 5:30–7:30pm · Multi-week series starts · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Mindful Looking</div>
+        <div class="event-detail">DAM · Slow down with a single work of art</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm · Pay-What-You-Can</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Wednesday, Mar 18 <span class="badge recurring">bowling night</span></div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ JACQUELINE NOVAK: 2026 Tour</div>
+        <div class="event-detail">Oriental Theater · 7:30pm · Get On Your Knees now on Netflix!</div>
+      </div>
+    </div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Off the Cuff (after bowling)</div>
+        <div class="event-detail">Meadowlark Bar · 9pm–1:30am</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Santi Espinosa ESPANGLISH</div>
+        <div class="event-detail">Bug Theatre · 7:30pm · Bilingual stand-up</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Built to Fail: Schools & Incarceration</div>
+        <div class="event-detail">Social Study · 7pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Thursday, Mar 19</div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Drawing: Nature Journaling</div>
+        <div class="event-detail">DAM Creative Hub · 10am–12pm · Multi-week series starts</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Emerging Filmmaker's Project</div>
+        <div class="event-detail">Bug Theatre · 7pm · Denver indie film scene since 2002</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Walter Masterson Trolls America</div>
+        <div class="event-detail">Oriental Theater · 7:30pm · Viral man-on-street satire</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Friday, Mar 20</div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ LUCHA LIBRE & LAUGHS: That's So Fetch!</div>
+        <div class="event-detail">Oriental Theater · 8pm · Pro wrestling + stand-up · Shotzi Blackheart, Abadon + more · 18+</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Adams Mystery Playhouse</div>
+        <div class="event-detail">6pm · Fri is open! Check calendar</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Seasoned Citizen of Comedy (50+)</div>
+        <div class="event-detail">Gnarly's Golden</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Colorado Dragon Boat Film Festival</div>
+        <div class="event-detail">Sie FilmCenter · CO's only all-Asian film festival</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">50th Annual Denver March Powwow</div>
+        <div class="event-detail">Historic Denver Coliseum · One of the largest in the country</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Saturday, Mar 21</div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Adams Mystery Playhouse</div>
+        <div class="event-detail">6pm · Sat is open! Check calendar</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Abstract Collage: Intuitive Flow</div>
+        <div class="event-detail">DAM · Shape, color, texture workshop · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Bad Indian: Native American Comedy Showcase</div>
+        <div class="event-detail">Bug Theatre · 7pm · Indigenous comedy talent</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Brad Galli</div>
+        <div class="event-detail">Gnarly's Golden</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">The Room Screening</div>
+        <div class="event-detail">Gnarly's Golden · Cult classic chaos</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fly Fishing Film Tour</div>
+        <div class="event-detail">Oriental Theater · 5pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Fiction by Steven Dietz</div>
+        <div class="event-detail">The Three Leaches · 7:30pm</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="week-label">Week 4 · Mar 22–31</div>
+
+  <div class="day">
+    <div class="day-label">Sunday, Mar 22 <span class="badge recurring">curling 7–10pm</span></div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Plants, Yoga & Beer</div>
+        <div class="event-detail">Bierstadt Lagerhaus · 11am · $37.05</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Tuesday, Mar 24</div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Conserving Across Exhibitions</div>
+        <div class="event-detail">DAM · Conservation team Q&A session · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">New Treasures: Expanding the DAM Collection</div>
+        <div class="event-detail">DAM · New acquisitions for members · Free w/ membership</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Bryce Crawford</div>
+        <div class="event-detail">Oriental Theater · 7pm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Wednesday, Mar 25 <span class="badge recurring">bowling night</span></div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Off the Cuff (after bowling)</div>
+        <div class="event-detail">Meadowlark Bar · 9pm–1:30am</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">What The River Knows Documentary</div>
+        <div class="event-detail">Oriental Theater · 7:30pm · Glen Canyon reemerging from Lake Powell</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Thursday, Mar 26</div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">EXPOSED: Storytelling Night</div>
+        <div class="event-detail">Bug Theatre · 7:30pm · Raw storytelling</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">The Cutoff Documentary</div>
+        <div class="event-detail">Oriental Theater · 7pm · Cocodona 250-mile ultramarathon</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Friday, Mar 27</div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ NERD NITE</div>
+        <div class="event-detail">Bug Theatre · 7pm · Three experts, 20 min each, drinking included</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Adams Mystery Playhouse</div>
+        <div class="event-detail">6pm · Fri is open! Check calendar</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Dale Watson and His Lone Stars</div>
+        <div class="event-detail">Oriental Theater · 8pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Men's World Curling Championships</div>
+        <div class="event-detail">Ogden, UT · Mar 27–Apr 4 · Road trip?!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Saturday, Mar 28</div>
+    <div class="event top-pick">
+      <div class="event-cat cat-top"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Denver Summit FC Home Opener</div>
+        <div class="event-detail">Empower Field at Mile High · 12pm · vs. Washington Spirit · 500 level from $20!</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">⭐ Adams Mystery Playhouse</div>
+        <div class="event-detail">6pm · Sat is open! Check calendar</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-good"></div>
+      <div class="event-body">
+        <div class="event-name">Mitch Fatel Return to Stand-Up</div>
+        <div class="event-detail">Gnarly's Golden · 8pm</div>
+      </div>
+    </div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">DBOM Birthday Bash: Genesis/Gabriel/Collins + Psychedelic Furs Tributes</div>
+        <div class="event-detail">Oriental Theater · 7pm · 20th anniversary celebration</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Sunday, Mar 29 <span class="badge recurring">curling 7–10pm</span></div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">I See Stars: Spin The Wheel Tour</div>
+        <div class="event-detail">Oriental Theater · 7pm</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="day-label">Monday, Mar 30</div>
+    <div class="event">
+      <div class="event-cat cat-maybe"></div>
+      <div class="event-body">
+        <div class="event-name">Dark Tranquillity & Soen</div>
+        <div class="event-detail">Oriental Theater · 7pm</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ SLOW NIGHTS ═══════════════════ -->
+  <h2>🌙 Slow Nights → Themed Movie Night or Chaos Bloom</h2>
+
+  <div class="tip-box">
+    <strong>When there's nothing calling:</strong> Roll for a themed movie night from the ideas below, or check Chaos Bloom's calendar. These nights are perfect when you're tired, need to save money, or just want cozy in-house vibes.
+  </div>
+
+  <div class="trip-card">
+    <div class="trip-title">🎬 Themed Movie Night Ideas</div>
+    <div class="trip-details">
+      <strong>Heist Night:</strong> Ocean's trilogy → Italian Job → Fancy cocktails, dress up<br>
+      <strong>Comfort Classics:</strong> Princess Bride → When Harry Met Sally → Cozy blankets, popcorn bar<br>
+      <strong>Sci-Fi Double:</strong> Blade Runner 2049 → Ex Machina → LED lights, futuristic snacks<br>
+      <strong>Studio Ghibli Marathon:</strong> Pick 2-3 → Homemade ramen, Japanese snacks<br>
+      <strong>Musical Madness:</strong> La La Land → Moulin Rouge → Sing along, dress glamorous<br>
+      <strong>True Crime Double:</strong> Zodiac → Parasite → Themed snacks, true crime podcast after<br>
+      <strong>Cozy Horror:</strong> Knives Out → Clue → Murder mystery cocktails<br>
+      <strong>Retro SciFi:</strong> 2001: A Space Odyssey → Arrival → Mind-bending snacks<br>
+      <strong>Chaos Bloom:</strong> Check their calendar for weird, wonderful experimental events
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ ROLL TABLE ═══════════════════ -->
+  <h2>🎲 Roll for Date Night</h2>
+  <p style="color: var(--text-dim); margin-bottom: 16px;">From your list! Roll a d20 for inspiration when you can't decide.</p>
+
+  <div class="roll-table">
+    <table>
+      <thead>
+        <tr><th>Roll</th><th>Date Idea</th><th>In/Out</th><th>Time</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>🕹️ Win a prize at an arcade</td><td>Out</td><td>1–2 hrs</td></tr>
+        <tr><td>2</td><td>🎨 Drawing date — zoo/aquarium, draw the fish</td><td>Out</td><td>2–3 hrs</td></tr>
+        <tr><td>3</td><td>🧱 Lego date night (prep needed)</td><td>In</td><td>1–3 hrs</td></tr>
+        <tr><td>4</td><td>🍣 Sushi battleship dinner</td><td>In</td><td>1–2 hrs</td></tr>
+        <tr><td>5</td><td>🏺 Make an air dry clay sculpture</td><td>In</td><td>1–2 hrs</td></tr>
+        <tr><td>6</td><td>🐦 Paint bird houses</td><td>In</td><td>1–2 hrs</td></tr>
+        <tr><td>7</td><td>🏛️ Local museum (see museum list below!)</td><td>Out</td><td>1–2 hrs</td></tr>
+        <tr><td>8</td><td>🍦 Walk for ice cream</td><td>Out</td><td>1–2 hrs</td></tr>
+        <tr><td>9</td><td>🔍 Geocache</td><td>Out</td><td>1–3 hrs</td></tr>
+        <tr><td>10</td><td>🏨 Airbnb/hotel within 2hrs, book day-of, under $100</td><td>Out</td><td>24hrs+</td></tr>
+        <tr><td>11</td><td>🧘 Take a yoga class together</td><td>Out</td><td>1–2 hrs</td></tr>
+        <tr><td>12</td><td>💃 Go to a salsa class</td><td>Out</td><td>1–2 hrs</td></tr>
+        <tr><td>13</td><td>📜 Attend a poetry reading</td><td>Out</td><td>1–2 hrs</td></tr>
+        <tr><td>14</td><td>👕 Make each other hoodies</td><td>In</td><td>2–4 hrs</td></tr>
+        <tr><td>15</td><td>🌅 Sunrise hike</td><td>Out</td><td>1–3 hrs</td></tr>
+        <tr><td>16</td><td>📸 Night photography (glow sticks, steel wool)</td><td>Out</td><td>1–2 hrs</td></tr>
+        <tr><td>17</td><td>🚗 Car movie in the mountains</td><td>Out</td><td>2–3 hrs</td></tr>
+        <tr><td>18</td><td>📍 Actionbound adventure in Golden or other city</td><td>Out</td><td>2–3 hrs</td></tr>
+        <tr><td>19</td><td>🍄 Grow mushrooms at home</td><td>In</td><td>1 hr</td></tr>
+        <tr><td>20</td><td>🏙️ City Skylines board game — best map in 2hrs</td><td>In</td><td>2–3 hrs</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip-box">
+    <strong>🎟️ Don't forget:</strong> You have a pass to <strong>Slick City</strong> (adult night Feb 27 Lakewood — use it!) · You have a pass to a <strong>dinner show</strong> · Check <strong>Bounce Empire</strong> (through Feb 28) · <strong>Adams Mystery Playhouse</strong> Fri & Sat 6pm — check calendar!
+  </div>
+
+
+  <!-- ═══════════════════ MUSEUM LIST ═══════════════════ -->
+  <h2>🏛️ Local Museum Roll List</h2>
+  <p style="color: var(--text-dim); margin-bottom: 16px;">When roll #7 comes up — pick from here! MCA & DAM are free with your membership.</p>
+
+  <div class="museum-table">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Museum</th><th>Location</th><th>Hours</th><th>Cost</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Denver Art Museum (DAM)</td><td>Golden Triangle</td><td>Tue–Sun 10am–5pm</td><td>FREE (members)</td><td>World-class, always worth a visit</td></tr>
+        <tr><td>2</td><td>Museum of Contemporary Art (MCA)</td><td>LoDo</td><td>Tue–Sun 11am–5pm</td><td>FREE (members)</td><td>Cutting-edge, great programs</td></tr>
+        <tr><td>3</td><td>Rocky Mountain Quilt Museum</td><td>Golden</td><td>Tue–Sat 10am–4pm</td><td>$8/person</td><td>Weird + close! Good for Golden day</td></tr>
+        <tr><td>4</td><td>Sasquatch Outpost</td><td>Bailey (~45 min)</td><td>Daily 10am–6pm</td><td>Free (donations)</td><td>Quick + quirky roadtrip</td></tr>
+        <tr><td>5</td><td>Forney Museum of Transportation</td><td>Denver (N Colorado Blvd)</td><td>Mon–Sat 10am–4pm</td><td>$12/person</td><td>Highly recommended — cars/trains/motorcycles, 2–3 hrs</td></tr>
+        <tr><td>6</td><td>Kirkland Museum</td><td>Denver (13th & Bannock)</td><td>Tue–Sun 11am–5pm</td><td>FREE (members)</td><td>Decorative arts, beautiful building</td></tr>
+        <tr><td>7</td><td>Wings Over the Rockies</td><td>Denver (Lowry)</td><td>Mon–Sat 10am–5pm, Sun 12–5pm</td><td>$13/person</td><td>Aircraft museum</td></tr>
+        <tr><td>8</td><td>Denver Museum of Dolls, Miniatures & Toys</td><td>Denver (S Gaylord St)</td><td>Tue–Sat 10am–4pm, Sun 1–4pm</td><td>$10/person</td><td>Oddly fascinating</td></tr>
+        <tr><td>9</td><td>Clock Tower Self-Guided Tour</td><td>Denver (16th St Mall)</td><td>Limited — book ahead</td><td>$15/person</td><td>D&F Tower, views of downtown, ~30 min</td></tr>
+        <tr><td>10</td><td>Black American West Museum</td><td>Denver (Five Points)</td><td>Fri–Sat 10am–2pm</td><td>$10/person</td><td>Important history, smaller space</td></tr>
+        <tr><td>11</td><td>Denver Firefighters Museum</td><td>Denver (Tremont)</td><td>Tue–Sat 11am–4pm</td><td>$10/person</td><td>Historic firehouse, fun — quick visit</td></tr>
+        <tr><td>12</td><td>Sexploratorium</td><td>Denver (E Colfax)</td><td>Wed–Sun, hours vary</td><td>$18/person</td><td>Sex-positive, interactive</td></tr>
+        <tr><td>13</td><td>Bishop's Castle</td><td>Rye (~2.5 hrs south)</td><td>Daylight hours year-round</td><td>FREE (donations)</td><td>Weird folk art castle — worth the drive + picnic</td></tr>
+        <tr><td>14</td><td>Museo de las Américas</td><td>Denver (Santa Fe Dr)</td><td>Tue–Fri 10am–5pm, Sat 12–5pm</td><td>$8/person</td><td>Latin American art/culture, rotating exhibits</td></tr>
+        <tr><td>15</td><td>American Museum of Western Art</td><td>Denver (Navajo St)</td><td>Mon, Wed, Fri 10am–4:30pm</td><td>$5/person</td><td>Anschutz Collection</td></tr>
+        <tr><td>16</td><td>Buffalo Bill Museum</td><td>Golden</td><td>Daily 9am–5pm (winter 10am–4pm)</td><td>$5/person</td><td>Combine with a hike!</td></tr>
+        <tr><td>17</td><td>Dikeou Collection</td><td>Denver (Larimer Square)</td><td>Wed–Fri 11am–5pm</td><td>FREE</td><td>Contemporary art, small space</td></tr>
+        <tr><td>18</td><td>Vehicle Vault</td><td>Parker (~40 min)</td><td>By appointment only</td><td>$15–20/person</td><td>Private exotic car collection — book ahead</td></tr>
+        <tr><td>19</td><td>Museum of Illusions</td><td>Denver (16th St Mall)</td><td>Daily 10am–9pm</td><td>$28/person</td><td>Fun for a random afternoon</td></tr>
+        <tr><td>20</td><td>Molly Brown House Museum</td><td>Denver</td><td>Tue–Sat 10am–5pm, Sun 12–4pm (Thu until 7pm)</td><td>$17 self-guided / $21 tour</td><td>Classic Denver history</td></tr>
+        <tr><td>21</td><td>Colorado Judicial Learning Center</td><td>Denver (Civic Center)</td><td>Mon–Fri 10am–3pm</td><td>FREE</td><td>Small, educational, quick visit</td></tr>
+        <tr><td>22</td><td>The Cell</td><td>Denver (Golden Triangle)</td><td>Check website</td><td>Varies by event</td><td>Near DAM — double feature potential</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ═══════════════════ ONGOING ═══════════════════ -->
+  <h2>📍 Ongoing Shows & Venues</h2>
+
+  <div class="ongoing-section">
+
+    <div class="ongoing-category">
+      <h3>🔁 Recurring Weekly</h3>
+      <div class="ongoing-item"><strong>⭐ Off the Cuff</strong><span>Wednesdays 9pm–1:30am · Meadowlark Bar · Improv music · STELLAR — go after bowling!</span></div>
+      <div class="ongoing-item"><strong>Curling League</strong><span>Sundays 7–10pm · Denver Curling Club, Golden · Last night April 5</span></div>
+      <div class="ongoing-item"><strong>Bowling</strong><span>Wednesdays ~6pm+ · Cherry Creek</span></div>
+      <div class="ongoing-item"><strong>Don't Tell Comedy at Broderick</strong><span>Thursdays · Washington Park · Recurring</span></div>
+    </div>
+
+    <div class="ongoing-category">
+      <h3>🎭 Theater Running Now</h3>
+      <div class="ongoing-item"><strong>Fiction by Steven Dietz</strong><span>The Three Leaches · Mar 11–21 · Pay-What-You-Can · Multiple performances</span></div>
+      <div class="ongoing-item"><strong>Ride the Cyclone (Musical)</strong><span>Bug Theatre · Mar 6–8, 13–15 · City Theatre Co</span></div>
+      <div class="ongoing-item"><strong>Romeo and Juliet</strong><span>Arvada Center · Feb 13–Mar 29</span></div>
+      <div class="ongoing-item"><strong>Junie B. Jones Musical</strong><span>Arvada Center · Through May 8</span></div>
+      <div class="ongoing-item"><strong>Dracula: Comedy of Terrors</strong><span>Garner Galleria · Through May 8</span></div>
+      <div class="ongoing-item"><strong>Cowboys & East Indians</strong><span>Singleton Theatre · Through Mar 1</span></div>
+    </div>
+
+    <div class="ongoing-category">
+      <h3>🎡 Immersive & Experiences</h3>
+      <div class="ongoing-item"><strong>Adams Mystery Playhouse</strong><span>Wed, Fri & Sat 6pm · Wed is out (bowling) · Fri & Sat OPEN — check calendar!</span></div>
+      <div class="ongoing-item"><strong>Slick City (Adult Night)</strong><span>Lakewood · You have a pass! Feb 27 adult night — use it!</span></div>
+      <div class="ongoing-item"><strong>Bounce Empire</strong><span>50+ inflatable attractions · Through Feb 28 — last chance!</span></div>
+      <div class="ongoing-item"><strong>Beat The Bomb</strong><span>Real-life video game · Through August 2026</span></div>
+      <div class="ongoing-item"><strong>BEYOND: Laser Light</strong><span>Church of Cannabis · Through Apr 30</span></div>
+      <div class="ongoing-item"><strong>Dinos Alive</strong><span>Art Center Denver · Through Mar 29</span></div>
+      <div class="ongoing-item"><strong>Brick Planet LEGO</strong><span>DMNS · Through May 3</span></div>
+      <div class="ongoing-item"><strong>Shiki Dreams</strong><span>Colorado Mills · Through Jun 29</span></div>
+    </div>
+
+    <div class="ongoing-category">
+      <h3>🖼️ Museum Exhibitions</h3>
+      <div class="ongoing-item"><strong>MCA: Minor Inconvenience</strong><span>Through Mar 24 · Free with membership</span></div>
+      <div class="ongoing-item"><strong>DAM: The Tangled Self</strong><span>Ongoing · Free with membership</span></div>
+      <div class="ongoing-item"><strong>DAM: Grass Scripts Bamboo</strong><span>Ongoing · Free with membership</span></div>
+      <div class="ongoing-item"><strong>DAM: Papercraft Book Arts</strong><span>Starts Feb 26, 1:30–4pm Thursdays</span></div>
+      <div class="ongoing-item"><strong>DAM: Drawing Ink Mediums</strong><span>Starts Mar 17, Tuesdays 5:30–7:30pm</span></div>
+      <div class="ongoing-item"><strong>DAM: Nature Journaling</strong><span>Starts Mar 19, Thursdays 10am–12pm</span></div>
+    </div>
+
+    <div class="ongoing-category">
+      <h3>🎵 Golden's Comfort & Comedy Festival</h3>
+      <div class="ongoing-item"><strong>Festival Runs</strong><span>Feb 23 – Mar 8 · Various Golden venues · goldencomedyfest.minersalley.com</span></div>
+      <div class="ongoing-item"><strong>Murder Mystery Burlesque</strong><span>Gnarly's · Almost sold out!</span></div>
+      <div class="ongoing-item"><strong>Adults-Only Magic Show</strong><span>Gnarly's · Mind-bending</span></div>
+      <div class="ongoing-item"><strong>Moms Unhinged</strong><span>Gnarly's · National touring show</span></div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>🎭 Compiled from: Do303, Bug Theatre, Oriental Theater, Gnarlys, Creepatorium,<br>
+    DAM, MCA, The Three Leaches, City Cast Denver, Visit Denver, Denver Curling Club & more</p>
+    <p style="margin-top: 12px;">Last updated: February 24, 2026</p>
+    <p style="margin-top: 8px; font-size: 0.8rem;">💛 Pro tips: Off the Cuff Wednesdays after bowling · Curling Sundays 7–10pm · First Fridays monthly · Adams Fri & Sat 6pm · Slick City pass — use it Feb 27!</p>
+  </footer>
+
+</body>
+</html>
