@@ -3,2232 +3,1502 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Denver Events · April-November 2026</title>
+  <title>Denver Events · 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #1a202c;
-      padding: 20px;
-      line-height: 1.6;
+    :root {
+      --burnt-orange: #C85A0E;
+      --warm-amber: #D98B2F;
+      --avocado: #6B7C2D;
+      --olive-dark: #4A5220;
+      --harvest-gold: #E8B84B;
+      --dusty-rose: #C47B6E;
+      --brick: #9B3A2E;
+      --cream: #F5EDD6;
+      --tan: #D4B896;
+      --brown-deep: #3D2410;
+      --mushroom: #8B7355;
+      --sage: #7A8B5C;
+      --teal-70s: #2D7068;
+      --pampas: #EDE4D0;
+      --rust: #B04A1C;
     }
-    
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Space Mono', monospace;
+      background-color: var(--pampas);
+      color: var(--brown-deep);
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(ellipse at 10% 20%, rgba(200,90,14,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 90% 80%, rgba(107,124,45,0.06) 0%, transparent 60%);
+    }
+
+    /* HEADER */
+    header {
+      background: var(--brown-deep);
+      padding: 0;
+      position: relative;
       overflow: hidden;
     }
-    
-    header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 40px;
-      text-align: center;
+
+    .header-stripe {
+      height: 8px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--burnt-orange) 0px, var(--burnt-orange) 40px,
+        var(--harvest-gold) 40px, var(--harvest-gold) 80px,
+        var(--avocado) 80px, var(--avocado) 120px,
+        var(--dusty-rose) 120px, var(--dusty-rose) 160px,
+        var(--teal-70s) 160px, var(--teal-70s) 200px
+      );
     }
-    
+
+    .header-inner {
+      padding: 40px 50px 35px;
+      position: relative;
+    }
+
+    .header-inner::before {
+      content: '';
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--harvest-gold);
+      opacity: 0.15;
+    }
+
+    .header-inner::after {
+      content: '';
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--burnt-orange);
+      opacity: 0.2;
+    }
+
     h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--cream);
+      letter-spacing: -1px;
+      line-height: 1.1;
+      text-transform: none;
     }
-    
+
+    h1 span {
+      color: var(--harvest-gold);
+    }
+
     .subtitle {
-      font-size: 1.1rem;
-      opacity: 0.95;
-    }
-    
-    .content {
-      padding: 40px;
-    }
-    
-    .month-header {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #667eea;
-      margin: 50px 0 30px 0;
-      padding-bottom: 12px;
-      border-bottom: 4px solid #667eea;
-    }
-    
-    .month-header:first-child {
-      margin-top: 0;
-    }
-    
-    .week-label {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #4a5568;
-      margin: 30px 0 15px 0;
-      padding-left: 8px;
-      border-left: 4px solid #a0aec0;
-    }
-    
-    .day {
-      margin-bottom: 25px;
-    }
-    
-    .day-label {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .badge {
-      font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 10px;
-      font-weight: 600;
+      font-family: 'Oswald', sans-serif;
+      color: var(--tan);
+      font-size: 0.85rem;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-top: 12px;
     }
-    
-    .badge.summit {
-      background: #fef5e7;
-      color: #d68910;
-      border: 1px solid #f39c12;
+
+    .updated-tag {
+      display: inline-block;
+      margin-top: 16px;
+      background: var(--burnt-orange);
+      color: var(--cream);
+      font-size: 0.7rem;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
     }
-    
-    .event {
+
+    /* LEGEND */
+    .legend-bar {
+      background: var(--cream);
+      border-bottom: 3px solid var(--tan);
+      padding: 14px 50px;
       display: flex;
-      gap: 10px;
-      padding: 10px 12px;
-      margin-bottom: 6px;
-      border-radius: 6px;
-      background: #f7fafc;
-      transition: all 0.2s;
-      font-size: 0.95rem;
-    }
-    
-    .event:hover {
-      background: #edf2f7;
-      transform: translateX(3px);
-    }
-    
-    .event.summit-home {
-      background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
-      border-left: 4px solid #f39c12;
-      font-weight: 500;
-    }
-    
-    .event.summit-away {
-      background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf3 100%);
-      border-left: 4px solid #3498db;
-      font-weight: 500;
-    }
-    
-    .event.top-pick {
-      background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%);
-      border-left: 4px solid #f39c12;
-    }
-    
-    .event-cat {
-      width: 6px;
-      border-radius: 3px;
-      flex-shrink: 0;
-    }
-    
-    .cat-top { background: #f39c12; }
-    .cat-good { background: #38a169; }
-    .cat-maybe { background: #4299e1; }
-    
-    .event-body {
-      flex: 1;
-    }
-    
-    .event-name {
-      font-weight: 600;
-      color: #2d3748;
-      margin-bottom: 3px;
-    }
-    
-    .event-detail {
-      font-size: 0.88rem;
-      color: #718096;
-    }
-    
-    footer {
-      background: #f7fafc;
-      padding: 30px;
-      text-align: center;
-      color: #718096;
-      font-size: 0.9rem;
-    }
-    
-    .legend {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
       flex-wrap: wrap;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #e2e8f0;
+      gap: 16px;
+      align-items: center;
     }
-    
+
+    .legend-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mushroom);
+      margin-right: 4px;
+    }
+
     .legend-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: var(--brown-deep);
     }
-    
-    .legend-color {
-      width: 18px;
-      height: 18px;
+
+    .legend-swatch {
+      width: 16px;
+      height: 16px;
       border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* MAIN CONTENT */
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 40px 50px;
+    }
+
+    /* MONTH HEADERS */
+    .month-block {
+      margin-bottom: 56px;
+    }
+
+    .month-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--burnt-orange);
+      border-bottom: 3px solid var(--burnt-orange);
+      padding-bottom: 10px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+    }
+
+    .month-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--mushroom);
+      font-style: normal;
+    }
+
+    /* DATE GROUP */
+    .date-group {
+      margin-bottom: 22px;
+    }
+
+    .date-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--olive-dark);
+      margin-bottom: 8px;
+      padding: 4px 0 4px 12px;
+      border-left: 4px solid var(--avocado);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .date-label .dow {
+      color: var(--mushroom);
+      font-weight: 400;
+    }
+
+    /* EVENT CARDS */
+    .event {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 12px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border-left: 4px solid transparent;
+      background: rgba(255,255,255,0.55);
+    }
+
+    .event:hover {
+      transform: translateX(4px);
+      box-shadow: 2px 2px 8px rgba(61,36,16,0.1);
+    }
+
+    .event-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .event-main {
+      flex: 1;
+    }
+
+    .event-title {
+      font-weight: 700;
+      color: var(--brown-deep);
+      line-height: 1.3;
+    }
+
+    .event-venue {
+      font-size: 0.78rem;
+      color: var(--mushroom);
+      margin-top: 1px;
+    }
+
+    .event-note {
+      font-size: 0.75rem;
+      color: var(--teal-70s);
+      margin-top: 2px;
+      font-style: italic;
+    }
+
+    /* CATEGORY STYLES */
+    .cat-summit-home {
+      background: linear-gradient(135deg, #FFF3E0, #FFDCB4);
+      border-left-color: var(--burnt-orange) !important;
+    }
+    .cat-summit-home .event-dot { background: var(--burnt-orange); }
+    .cat-summit-home .event-title { color: var(--brick); }
+
+    .cat-summit-away {
+      background: linear-gradient(135deg, #FEF9E7, #FDEBD0);
+      border-left-color: var(--warm-amber) !important;
+    }
+    .cat-summit-away .event-dot { background: var(--warm-amber); }
+
+    .cat-soccer-wc {
+      background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+      border-left-color: var(--avocado) !important;
+    }
+    .cat-soccer-wc .event-dot { background: var(--avocado); }
+    .cat-soccer-wc .event-title { color: var(--olive-dark); font-size: 0.9rem; }
+
+    .cat-music {
+      background: rgba(200,90,14,0.05);
+      border-left-color: var(--dusty-rose) !important;
+    }
+    .cat-music .event-dot { background: var(--dusty-rose); }
+
+    .cat-comedy {
+      background: rgba(232,184,75,0.1);
+      border-left-color: var(--harvest-gold) !important;
+    }
+    .cat-comedy .event-dot { background: var(--harvest-gold); }
+
+    .cat-art {
+      background: rgba(45,112,104,0.07);
+      border-left-color: var(--teal-70s) !important;
+    }
+    .cat-art .event-dot { background: var(--teal-70s); }
+
+    .cat-theater {
+      background: rgba(139,115,85,0.08);
+      border-left-color: var(--mushroom) !important;
+    }
+    .cat-theater .event-dot { background: var(--mushroom); }
+
+    .cat-film {
+      background: rgba(155,58,46,0.06);
+      border-left-color: var(--brick) !important;
+    }
+    .cat-film .event-dot { background: var(--brick); }
+
+    .cat-special {
+      background: rgba(107,124,45,0.08);
+      border-left-color: var(--sage) !important;
+    }
+    .cat-special .event-dot { background: var(--sage); }
+
+    .cat-community, .cat-recurring, .cat-festival, .cat-wellness, .cat-holiday {
+      background: rgba(212,184,150,0.2);
+      border-left-color: var(--tan) !important;
+    }
+    .cat-community .event-dot,
+    .cat-recurring .event-dot,
+    .cat-festival .event-dot,
+    .cat-wellness .event-dot,
+    .cat-holiday .event-dot { background: var(--tan); }
+
+    /* DIVIDER */
+    .section-divider {
+      height: 3px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--burnt-orange) 0px, var(--burnt-orange) 20px,
+        transparent 20px, transparent 24px
+      );
+      margin: 48px 0;
+      opacity: 0.4;
+    }
+
+    /* ROLL SECTIONS */
+    .roll-section {
+      background: var(--brown-deep);
+      color: var(--cream);
+      border-radius: 8px;
+      padding: 36px 40px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .roll-section::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 2px solid rgba(232,184,75,0.15);
+    }
+
+    .roll-section::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: -20px;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 2px solid rgba(200,90,14,0.15);
+    }
+
+    .roll-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--harvest-gold);
+      margin-bottom: 8px;
+    }
+
+    .roll-sub {
+      font-size: 0.8rem;
+      color: var(--tan);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    /* ROLL FOR DATES */
+    .dice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .dice-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(232,184,75,0.2);
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .dice-card:hover {
+      background: rgba(255,255,255,0.13);
+    }
+
+    .dice-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--harvest-gold);
+      line-height: 1;
+    }
+
+    .dice-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-top: 4px;
+    }
+
+    .dice-desc {
+      font-size: 0.75rem;
+      color: rgba(245,237,214,0.7);
+      margin-top: 6px;
+      line-height: 1.3;
+    }
+
+    /* MUSEUM TABLE */
+    .museum-section {
+      margin-bottom: 40px;
+    }
+
+    .museum-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--burnt-orange);
+      margin-bottom: 6px;
+    }
+
+    .museum-note {
+      font-size: 0.8rem;
+      color: var(--mushroom);
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    .museum-table-wrap {
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 2px solid var(--tan);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    thead tr {
+      background: var(--brown-deep);
+    }
+
+    thead th {
+      padding: 10px 12px;
+      text-align: left;
+      color: var(--cream);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--pampas);
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover {
+      background: rgba(232,184,75,0.08);
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 9px 12px;
+      color: var(--brown-deep);
+      vertical-align: top;
+    }
+
+    tbody td:first-child {
+      font-weight: 700;
+      color: var(--mushroom);
+    }
+
+    .free-badge {
+      display: inline-block;
+      background: var(--avocado);
+      color: white;
+      font-size: 0.65rem;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ONGOING SECTION */
+    .ongoing-section {
+      background: rgba(255,255,255,0.6);
+      border: 2px solid var(--tan);
+      border-radius: 8px;
+      padding: 32px 36px;
+      margin-bottom: 40px;
+    }
+
+    .ongoing-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--burnt-orange);
+      margin-bottom: 24px;
+    }
+
+    .ongoing-group {
+      margin-bottom: 24px;
+    }
+
+    .ongoing-group-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--olive-dark);
+      border-bottom: 2px solid var(--tan);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    .ongoing-item {
+      background: white;
+      border-radius: 4px;
+      padding: 11px 14px;
+      margin-bottom: 8px;
+      border-left: 4px solid var(--harvest-gold);
+    }
+
+    .ongoing-item.green { border-left-color: var(--avocado); }
+    .ongoing-item.rose { border-left-color: var(--dusty-rose); }
+    .ongoing-item.teal { border-left-color: var(--teal-70s); }
+
+    .ongoing-item strong {
+      font-size: 0.88rem;
+      color: var(--brown-deep);
+    }
+
+    .ongoing-item span {
+      display: block;
+      font-size: 0.77rem;
+      color: var(--mushroom);
+      margin-top: 2px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--brown-deep);
+      color: var(--tan);
+      padding: 28px 50px;
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+
+    footer .header-stripe {
+      margin-bottom: 20px;
+    }
+
+    footer strong {
+      color: var(--cream);
+    }
+
+    /* SECTION HEADERS (for the bottom roll sections) */
+    .section-big-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--brown-deep);
+      margin-bottom: 6px;
+    }
+
+    .section-big-sub {
+      font-size: 0.8rem;
+      color: var(--mushroom);
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 24px 20px; }
+      header .header-inner { padding: 28px 20px 24px; }
+      h1 { font-size: 2rem; }
+      .legend-bar { padding: 12px 20px; }
+      footer { padding: 24px 20px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Denver Events Calendar</h1>
-      <p class="subtitle">Complete Guide · April-November 2026 · Updated April 8, 2026</p>
-    </header>
-    
-    <div class="content">
-      
-      <!-- APRIL 2026 -->
-      <div class="month-header">April 2026</div>
-      
-      <div class="week-label">Week 1 · April 7-13</div>
-      
-      <div class="day">
-        <div class="day-label">Monday, April 7</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Denver Jazz Fest</div>
-            <div class="event-detail">Various venues · April 7-12 · Annual jazz festival</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Five 5ths: The Big Lebowski</div>
-            <div class="event-detail">Junkyard Social Club, Boulder · 7pm · Theatre</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Crowbar & Eyehategod</div>
-            <div class="event-detail">Oriental Theater · Metal show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Worry Club - I'm Freaking Out Tour</div>
-            <div class="event-detail">HQ Denver · 7:30pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, April 8</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Comedy & Cocktails (21+)</div>
-            <div class="event-detail">Stranahan's Whiskey · Comedy with cocktails</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Stranger Than Strange: Madagascar's Cretaceous Mammals</div>
-            <div class="event-detail">Denver Museum of Nature & Science</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Horror Movie Night</div>
-            <div class="event-detail">Creepatorium · 7pm · Donation-based · 2nd Wed monthly</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Qual</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, April 9</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">DU Pioneers vs Michigan (Frozen Four)</div>
-            <div class="event-detail">NCAA Division I semifinals · Hockey</div>
-          </div>
-        </div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">East High Angel Toons Film Festival</div>
-            <div class="event-detail">Holiday Theater · Inaugural student film festival</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">John Summit</div>
-            <div class="event-detail">Red Rocks · Concert</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Psychic Standup with Karen Rontowski</div>
-            <div class="event-detail">Bug Theatre · 7pm · Comedy Central, DryBar</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Don't Tell Comedy</div>
-            <div class="event-detail">Broderick (Washington Park) · Secret show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Colorado Auto Show</div>
-            <div class="event-detail">Colorado Convention Center · April 9-12</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Girl In A Coma</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">ZOSO - Led Zeppelin Tribute</div>
-            <div class="event-detail">Oriental Theater · Evening show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Open Studio: Adrian Stevens & Sean Snyder</div>
-            <div class="event-detail">DAM · Beadwork + ancestral heritage</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, April 10</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Denver Silent Film Festival</div>
-            <div class="event-detail">Sie FilmCenter · April 10-12</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Marin Alsop Conducts Scheherazade</div>
-            <div class="event-detail">Boettcher Concert Hall · Colorado Symphony</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">MasterWorks</div>
-            <div class="event-detail">Ellie Caulkins Opera House · Colorado Ballet · April 10-19</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Psychic Standup with Karen Rontowski</div>
-            <div class="event-detail">Bug Theatre · 7:30pm</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">TUFF TUFF / Battle Pussy / Ritual Midnight</div>
-            <div class="event-detail">Creepatorium · 8pm · 21+ live music</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Don't Tell Comedy</div>
-            <div class="event-detail">Baker · Secret show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Kyle Smith</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Piter Albeiro</div>
-            <div class="event-detail">Oriental Theater · Live performance</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, April 11</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Gallery goes Noraebang!</div>
-            <div class="event-detail">MCA Denver · Korean-style karaoke in gallery</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">2nd Saturdays at CSU Spur</div>
-            <div class="event-detail">CSU Spur · Free · Girls and Science theme</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Second Saturday Art Walk</div>
-            <div class="event-detail">Cherry Creek North · Monthly art walk</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">THE DOSE: Psychedelic Comedy</div>
-            <div class="event-detail">Bug Theatre · 7pm · Immersive experience</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Sugar, We're Flowin' Down: 2000s Emo Yoga</div>
-            <div class="event-detail">Creepatorium · 1pm · $20 · Bring mat</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Zingara & Level Up</div>
-            <div class="event-detail">Red Rocks · Concert + giveaway</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Me Porto Bonito (Reggaeton Party)</div>
-            <div class="event-detail">Oriental Theater · Bad Bunny tribute + Karol G, J Balvin</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Spring Landscaping Volunteer Work</div>
-            <div class="event-detail">Denver Curling Club · 9am-1pm · Lawn mowing, tree trimming</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Key of the Satyr</div>
-            <div class="event-detail">Creepatorium · 6:30pm · Kinbaku, butoh, ritual</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Don't Tell Comedy</div>
-            <div class="event-detail">Capitol Hill · Secret show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Ultra Sunn</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Demo Artist: Lilian Lara</div>
-            <div class="event-detail">DAM Cosmic Studio · Studio Saturdays</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Sunday, April 12</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Candlelight: Hip-Hop on Strings</div>
-            <div class="event-detail">Ritz-Carlton Spa · Multi-sensory concert</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Soft Life Yoga</div>
-            <div class="event-detail">Museum For Black Girls · Yoga Daze Co</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Soul Sunday R&B Brunch</div>
-            <div class="event-detail">Spangalang Brewery · Live band + brunch</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Yoga at the Downtown Aquarium</div>
-            <div class="event-detail">Downtown Aquarium · Shark Tank yoga</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Respect Women's Wrestling</div>
-            <div class="event-detail">The Federal Theatre · All women's pro wrestling tournament</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Easy Jim - Grateful Dead Tribute</div>
-            <div class="event-detail">Oriental Theater · 5pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, April 13</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Bloodywood - SOLD OUT</div>
-            <div class="event-detail">Oriental Theater · System Of A Brown Tour</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="week-label">Week 2 · April 14-20</div>
-
-      <div class="day">
-        <div class="day-label">Monday, April 14</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Bi-Frost Film Festival & Art Show</div>
-            <div class="event-detail">Holiday Theater · Denver Public Schools student films</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Logan Lecture: Enrique Chagoya</div>
-            <div class="event-detail">DAM · Satirical cartoons artist</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Uli Jon Roth</div>
-            <div class="event-detail">Oriental Theater · Guitar legend</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Pink Turns Blue</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, April 15</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Movie Night: Adam, Rory & Ben</div>
-            <div class="event-detail">Bug Theatre · 7:30pm · Grawlix talk over movie</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Mixed Fours National Championship</div>
-            <div class="event-detail">Denver Curling Club · April 15-19 · National curling event</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, April 16</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Clothing Swap with MCA Teens</div>
-            <div class="event-detail">MCA Denver · Second-hand shopping event</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">CU Denver Emerging Filmmaker's Project</div>
-            <div class="event-detail">Bug Theatre · 7pm · Denver indie film</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Don't Tell Comedy</div>
-            <div class="event-detail">Broderick (Washington Park) · Secret show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Dopethrone</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, April 17 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ USWNT vs Japan</div>
-            <div class="event-detail">DICK'S Sporting Goods Park · U.S. Women's National Team · Season ticket event</div>
-          </div>
-        </div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Member Mixer: Pottery Class with city mud</div>
-            <div class="event-detail">MCA Denver · Members-only pottery class + happy hour</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">TTL Playwrights' Showcase</div>
-            <div class="event-detail">The Three Leaches · 5-week course readings · Pay-What-You-Can</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Denver North High Fundraiser</div>
-            <div class="event-detail">Bug Theatre · 8pm · Comedy fundraiser</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Don't Tell Comedy</div>
-            <div class="event-detail">Westminster · Secret show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">The Meteors</div>
-            <div class="event-detail">HQ Denver · 9pm</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Crazy Diamonds - Pink Floyd Tribute</div>
-            <div class="event-detail">Oriental Theater · 7pm</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Joke Box</div>
-            <div class="event-detail">Gnarly's Golden · Interactive comedy show</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, April 18</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Pete Correale: As I Was Saying ft. Geoff Tice</div>
-            <div class="event-detail">Holiday Theater · Comedy night · AEG presents</div>
-          </div>
-        </div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Color of Fashion: Denim Reimagined</div>
-            <div class="event-detail">MCA Denver · Teen workshop ages 14-18 · Upcycling with Olivia McCann</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Denver Metro Jazz: Swing Into Spring</div>
-            <div class="event-detail">Bug Theatre · 7pm · Count Basie Orchestra tribute</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Traditional Japanese Art of Bonseki</div>
-            <div class="event-detail">DAM · Miniature sand landscapes</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Mortified Live!</div>
-            <div class="event-detail">Oriental Theater · Adults share teenage journals + throwback band</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Poetry to Play Workshop</div>
-            <div class="event-detail">The Three Leaches · April 18-19 · Poets → Playwrights intensive</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Don't Tell Comedy</div>
-            <div class="event-detail">Five Points · Secret show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">The Emo Night Tour</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, April 19</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Denver Trivia League Championships</div>
-            <div class="event-detail">Bug Theatre · 2pm · $1000 prize</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Essenger</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="week-label">Week 3 · April 21-27</div>
-
-      <div class="day">
-        <div class="day-label">Monday, April 21</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Mindful Looking</div>
-            <div class="event-detail">DAM · Slow down with art</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Paul Gilbert</div>
-            <div class="event-detail">Oriental Theater · Guitar performance</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Nini</div>
-            <div class="event-detail">HQ Denver · 7:30pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, April 22</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Failure Lab Spring Exhibition Opening</div>
-            <div class="event-detail">MCA Denver · Teen exhibition opening · Sips, snacks · On view through May 24</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Ignite Denver 44</div>
-            <div class="event-detail">Bug Theatre · 7pm · 5-min presentations, auto-advancing slides</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Terror</div>
-            <div class="event-detail">Oriental Theater · Hardcore band</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, April 23</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">EXPOSED: DRAGONFISH by Soleil Kohl</div>
-            <div class="event-detail">Bug Theatre · 7:30pm · Underwater grief odyssey</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Vomit Forth</div>
-            <div class="event-detail">HQ Denver · 7pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, April 24</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Nerd Nite</div>
-            <div class="event-detail">Bug Theatre · 7pm · 3 experts, 20 min each · Discovery Channel but live</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Women+Film Festival</div>
-            <div class="event-detail">Sie FilmCenter · Features, shorts, documentaries</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Bowls with the Bards: King Lear</div>
-            <div class="event-detail">The Three Leaches · Cannabis-enhanced Shakespeare</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">He Is Legend</div>
-            <div class="event-detail">Oriental Theater · Rock band</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Teletunes Music Video Dance Party</div>
-            <div class="event-detail">HQ Denver · 9pm</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Steve Vanderploeg</div>
-            <div class="event-detail">Gnarly's Golden · Comedy performance</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, April 25 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs San Diego Wave</div>
-            <div class="event-detail">DICK'S Sporting Goods Park · 6:45pm · ION, The Spot Denver 3 · HOME · Season tickets</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Bowls with the Bards: King Lear</div>
-            <div class="event-detail">The Three Leaches · Cannabis-enhanced Shakespeare</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Lebanon Hanover</div>
-            <div class="event-detail">Oriental Theater · 8pm · Dark wave duo</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Defeated Sanity</div>
-            <div class="event-detail">HQ Denver · 7pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, April 26</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Mile High Asian Food Week</div>
-            <div class="event-detail">Various venues · April 26-May 3 · 8-day food celebration</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Sundays on Santa Fe</div>
-            <div class="event-detail">Santa Fe Art District · Free gallery crawl</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">The Hideout One Year Anniversary Showcase</div>
-            <div class="event-detail">Oriental Theater · Dance performances · 13+ due to mature content</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Vampires Everywhere</div>
-            <div class="event-detail">HQ Denver · 7pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, April 27</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Freak Train</div>
-            <div class="event-detail">Bug Theatre · 8pm · Denver's longest-running open-stage variety</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="week-label">Week 4 · April 28-May 4</div>
-
-      <div class="day">
-        <div class="day-label">Monday, April 28</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Jason D Williams</div>
-            <div class="event-detail">Oriental Theater · Live performance</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Rosegarden Funeral Party</div>
-            <div class="event-detail">HQ Denver · 7:30pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, April 29</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Jimmy Pardo</div>
-            <div class="event-detail">Bug Theatre · 7pm · Comedy</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Drifting Roots</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, April 30</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Creative Career Night 2026</div>
-            <div class="event-detail">MCA Denver · Free event · Celebrate creative careers + community</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Local Listens: Queer Lineage</div>
-            <div class="event-detail">Bug Theatre · 7:30pm · LGBTQ+ Colorado stories · Staged readings</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Toaster Bath</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MAY 2026 -->
-      <div class="month-header">May 2026</div>
-
-      <div class="day">
-        <div class="day-label">Thursday, May 1</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Denver Fashion Week</div>
-            <div class="event-detail">Various venues · May 1-9 · 8 runway shows, inclusive experiences</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">The Pulp MX Show - Live!</div>
-            <div class="event-detail">Oriental Theater · Live taping</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Traitrs</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, May 2</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Color of Fashion: Beading & Embellishment</div>
-            <div class="event-detail">MCA Denver · Teen workshop ages 14-18 · with Menez to Society</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Spring Gardening Classes</div>
-            <div class="event-detail">Denver Botanic Gardens · Japanese Garden, Pollinators, Tomato, Bulbs</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Slime Court Live!</div>
-            <div class="event-detail">Bug Theatre · 8pm · Sue your friends!</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Emo Vs Pop Punk</div>
-            <div class="event-detail">Oriental Theater · Myspace music video party with Tom photo ops</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">DM101 - Depeche Mode Tribute</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, May 3 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Boston Legacy</div>
-            <div class="event-detail">Gilette Stadium · 1pm · CBS Sports Network · AWAY (find a pub!)</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Trio Los Panchos</div>
-            <div class="event-detail">Oriental Theater · Legendary Latin bolero trio · 70+ years legacy</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">HQ Garage Sale</div>
-            <div class="event-detail">HQ Denver · 2pm · Vendor info: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="350104060558545b54525058505b41755258545c591b565a58">[email&#160;protected]</a></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, May 5</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">MCA All the Time, Disco Occasionally</div>
-            <div class="event-detail">MCA Denver rooftop · Print, magazines, teen programs + Birdy Magazine collab</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Drop-In Drawing with Anna Kaye</div>
-            <div class="event-detail">DAM · In-person drawing session</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Master Boot Record</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, May 6</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Black Mirror/Red Carpet</div>
-            <div class="event-detail">Gnarly's Golden · Improvised sci-fi horror · Mines Robots Ethics Class</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Kottonmouth Kings</div>
-            <div class="event-detail">HQ Denver · 7pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, May 7</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Spring Plant Sale Preview Party</div>
-            <div class="event-detail">Denver Botanic Gardens · 4-7:30pm · Exclusive access + treats, wine, beer</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Mike Watt and the Missingmen</div>
-            <div class="event-detail">HQ Denver · 9pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, May 8</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Spring Plant Sale</div>
-            <div class="event-detail">Denver Botanic Gardens · 8am-5pm · Florals, fruits, vegetables for Colorado</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Ryan Conner</div>
-            <div class="event-detail">Bug Theatre · 8pm · Late Late Show, Last Comic Standing comedian</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Danae Hays: The Buckwild Tour</div>
-            <div class="event-detail">Oriental Theater · Comedy tour</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Mike Watt and the Missingmen</div>
-            <div class="event-detail">HQ Denver · 9pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, May 9 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Houston Dash</div>
-            <div class="event-detail">Shell Energy Stadium · 6pm · NWSL+ · AWAY (pub watch!)</div>
-          </div>
-        </div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Gallery goes Noraebang!</div>
-            <div class="event-detail">MCA Denver · Korean karaoke in gallery (2nd occurrence)</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Spring Plant Sale</div>
-            <div class="event-detail">Denver Botanic Gardens · 8am-5pm · Day 2</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Black Gold</div>
-            <div class="event-detail">Bug Theatre · 6pm · 4 Black men learning they're deserving</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">U2 & SHINEDOWN TRIBUTES!</div>
-            <div class="event-detail">Oriental Theater · Bullet the Blue Sky + Sound of Madness co-headline</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Uada + Mortiis</div>
-            <div class="event-detail">HQ Denver · 7pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, May 10</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Pop-Punk Tribute Night</div>
-            <div class="event-detail">Oriental Theater · White Stripes, Fallout Boy, Sum 41, Jimmy Eat World</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, May 12</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Round the Table with Colorado Printmakers</div>
-            <div class="event-detail">DAM · Panel conversation · Round the Clock: 24 Hours of Colorado in Prints</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, May 13</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">JACQUELINE NOVAK: 2026 TOUR</div>
-            <div class="event-detail">Oriental Theater · All new comedy show</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, May 15</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">All 80s Alternative Night</div>
-            <div class="event-detail">HQ Denver · 9pm · DJ Eli all vinyl 8pm-1:30am</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, May 16 <span class="badge summit">SUMMIT FC HOME - PRIDE</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Orlando Pride (PRIDE NIGHT)</div>
-            <div class="event-detail">DICK'S Sporting Goods Park · 6:45pm · ION · HOME · Season tickets</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Discovering Butterflies</div>
-            <div class="event-detail">DAM · May 16 & 23 · 10am-2pm · 2-part adventure with Butterfly Pavilion</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Chris Fest! DAY 1</div>
-            <div class="event-detail">Oriental Theater · Multi-day music festival</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">All Your Friends</div>
-            <div class="event-detail">HQ Denver · 8:30pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, May 17</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Chris Fest! DAY 2</div>
-            <div class="event-detail">Oriental Theater · Music festival day 2</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, May 19</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Logan Lecture: Hayv Kahraman</div>
-            <div class="event-detail">DAM · Iraqi refugee artist · Narrative, memory, diaspora</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Windwaker + Colorblind + If Not For Me</div>
-            <div class="event-detail">HQ Denver · 7pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, May 20</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">The Decibel Magazine Tour 2026</div>
-            <div class="event-detail">Oriental Theater · Metal tour</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Stop.Drop.Rewind</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, May 21</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">The Emerging Filmmaker's Project</div>
-            <div class="event-detail">Bug Theatre · 7pm · Denver indie film since 2002</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Anti Omega</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, May 22</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Neyla Pekarek</div>
-            <div class="event-detail">Oriental Theater · Former Lumineers · The Queen of Magic EP + magic acts</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">May Be Fern and Covergurls</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, May 23 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Utah Royals</div>
-            <div class="event-detail">America First Field · 4:30pm · ION · AWAY (pub watch!)</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Discovering Butterflies (Day 2)</div>
-            <div class="event-detail">DAM · 10am-2pm · Part 2 with Butterfly Pavilion</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Screeching Weasel</div>
-            <div class="event-detail">Oriental Theater · Punk rock</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">The Golden Ticket Tour</div>
-            <div class="event-detail">Gnarly's Golden · As seen on KillTony and Netflix</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, May 25</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Prince Daddy And The Hyena</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, May 26</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Artist Talk with Dabin Ahn</div>
-            <div class="event-detail">DAM · AAPI Month celebration</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, May 29 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Racing Louisville</div>
-            <div class="event-detail">Lynn Family Stadium · 6pm · Prime Video · AWAY (pub watch!)</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">All Star Tribute to Chad Aman!</div>
-            <div class="event-detail">Oriental Theater · Tribute concert</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">The Quakes</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, May 30</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Advanced Bonsai Design – A Performance</div>
-            <div class="event-detail">Denver Botanic Gardens · 1-4pm · Front Range trees → stunning bonsai</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Gardening Classes</div>
-            <div class="event-detail">Denver Botanic Gardens · Vines/Groundcovers · Converting Lawn to Xeriscape</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Tributes to Depeche Mode, Filter, and INXS!</div>
-            <div class="event-detail">Oriental Theater · Triple tribute show</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">ALT! The Party</div>
-            <div class="event-detail">HQ Denver · 8pm · Nu metal, alt rock, grunge</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, May 31</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Film Score Fest</div>
-            <div class="event-detail">Oriental Theater · Celebrating film music</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Pet Traits + Discount Local</div>
-            <div class="event-detail">HQ Denver · 3pm</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- JUNE 2026 -->
-      <div class="month-header">June 2026</div>
-
-      <div class="day">
-        <div class="day-label">Monday, June 2</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Anderman Photography Lecture: Alexey Titarenko</div>
-            <div class="event-detail">DAM · Photographer exploring city character + people</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, June 3</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Ladytron "Paradises"</div>
-            <div class="event-detail">Oriental Theater · Electronic band tour</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Gozu + Restless Spirit</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, June 4</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Denver Mixed Doubles Cash Spiel</div>
-            <div class="event-detail">Denver Curling Club · June 4-7 · $5000 prize · 20 teams, 4 pools</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, June 5</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Lucha Libre & Laughs: Eternal Recurrence</div>
-            <div class="event-detail">Oriental Theater · 13-year anniversary · Pro wrestling + comedy · 18+</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Carnivale De Sensuale Secret Rooftop Show</div>
-            <div class="event-detail">Secret rooftop overlooking downtown · 125 seats · Location revealed 1 week before</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, June 6</div>
-        <div class="event top-pick">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">Lucha Libre & Laughs: Eternal Recurrence (Night 2)</div>
-            <div class="event-detail">Oriental Theater · 13-year anniversary night 2 · Pro wrestling + comedy · 18+</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Adelitas Way</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Sunday, June 7</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">CD Ghost</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, June 9</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Seahaven</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, June 12</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Rockstar Pole Fitness: Strange Disco</div>
-            <div class="event-detail">Oriental Theater · Pole/aerial showcase · Disco glamour theme</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Lumina</div>
-            <div class="event-detail">HQ Denver · 8pm · Refined sensory-driven experience</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, June 13</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Flatline Fest: 2 Night Extreme Metal Festival (Night 1)</div>
-            <div class="event-detail">Oriental Theater · Producer Dave Otero · International lineup</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, June 16</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Behind the Baton LIVE</div>
-            <div class="event-detail">DAM · 3pm & 6:30pm · Music + art of the American West</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, June 17</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Bob Log III</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, June 19</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Tributes to Pearl Jam, Foo Fighters, and more!</div>
-            <div class="event-detail">Oriental Theater · Multi-band tribute</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Cruel Mourning - Album Release</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, June 20</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Teletunes Music Video Dance Party</div>
-            <div class="event-detail">HQ Denver · 9pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, June 24</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Bug Hunter / The Narcissist Cookbook + Jam Mechanics</div>
-            <div class="event-detail">Oriental Theater · VIP Q&A + photo ops available</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, June 26</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Kelsey Karter & The Heroines</div>
-            <div class="event-detail">HQ Denver · 8:30pm</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- JULY 2026 -->
-      <div class="month-header">July 2026</div>
-
-      <div class="day">
-        <div class="day-label">Thursday, July 3 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Kansas City Current</div>
-            <div class="event-detail">Centennial Stadium · 7:30pm · NWSL+ · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, July 7</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">LA Guns</div>
-            <div class="event-detail">Oriental Theater · Rock band</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, July 8</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Total Chaos</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Sunday, July 12 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Houston Dash</div>
-            <div class="event-detail">Centennial Stadium · 5pm · Victory+ · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, July 17</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Void Atlas</div>
-            <div class="event-detail">HQ Denver · 7:30pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, July 18 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Portland Thorns</div>
-            <div class="event-detail">Centennial Stadium · 12pm · CBS, Paramount+ · HOME · Season tickets</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">All 80s Alternative Night</div>
-            <div class="event-detail">HQ Denver · 9pm · DJ Eli all vinyl 8pm-1:30am</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Sunday, July 26 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Washington Spirit</div>
-            <div class="event-detail">Audi Field · 5pm · Victory+ · AWAY (pub watch!)</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Riki Rachtman</div>
-            <div class="event-detail">Oriental Theater · Performance</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- AUGUST 2026 -->
-      <div class="month-header">August 2026</div>
-
-      <div class="day">
-        <div class="day-label">Sunday, August 2 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Boston Legacy</div>
-            <div class="event-detail">Centennial Stadium · 7pm · ESPN, ESPN Deportes, ESPN App · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, August 5 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs NC Courage</div>
-            <div class="event-detail">Centennial Stadium · 8pm · CBS Sports Network, The Spot Denver 3 · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, August 7</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Ded</div>
-            <div class="event-detail">HQ Denver · 7pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, August 8 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Utah Royals</div>
-            <div class="event-detail">Centennial Stadium · 2pm · ION, The Spot Denver 3 · HOME · Season tickets</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">DoKnow & DaHawmies Comedy Tour</div>
-            <div class="event-detail">Oriental Theater · Comedy tour ft. Daniel Lopez</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Tuesday, August 11</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Shonen Knife</div>
-            <div class="event-detail">HQ Denver · 8pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Thursday, August 13</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Foundations of Bonsai in Colorado</div>
-            <div class="event-detail">Denver Botanic Gardens · 5:30-7:30pm · History of bonsai + native landscapes</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, August 14 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at San Diego Wave</div>
-            <div class="event-detail">Snapdragon Stadium · 8pm · Victory+, The Spot Denver 3 · AWAY (pub watch!)</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Monday, August 18</div>
-        <div class="event">
-          <div class="event-cat cat-good"></div>
-          <div class="event-body">
-            <div class="event-name">Anderman Photography Lecture: Conversation with Jungjin Lee</div>
-            <div class="event-detail">DAM · Photographer conversation</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, August 21</div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Teletunes Music Video Dance Party</div>
-            <div class="event-detail">HQ Denver · 9pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, August 22 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Portland Thorns</div>
-            <div class="event-detail">Providence Park · 6:45pm · ION, The Spot Denver 3 · AWAY (pub watch!)</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, August 29 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Chicago Stars</div>
-            <div class="event-detail">Centennial Stadium · 6:45pm · ION, The Spot Denver 3 · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SEPTEMBER 2026 -->
-      <div class="month-header">September 2026</div>
-
-      <div class="day">
-        <div class="day-label">Sunday, September 6 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Gotham FC</div>
-            <div class="event-detail">Centennial Stadium · 12pm · CBS, Paramount+ · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Friday, September 11 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Angel City FC</div>
-            <div class="event-detail">BMO Stadium · 8pm · Victory+, The Spot Denver 3 · AWAY (pub watch!)</div>
-          </div>
-        </div>
-        <div class="event">
-          <div class="event-cat cat-maybe"></div>
-          <div class="event-body">
-            <div class="event-name">Unsane</div>
-            <div class="event-detail">HQ Denver · 9pm</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Wednesday, September 16 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Bay FC (Hispanic Heritage Night)</div>
-            <div class="event-detail">Centennial Stadium · 7:30pm · Victory+, The Spot Denver 3 · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, September 19 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Seattle Reign</div>
-            <div class="event-detail">Centennial Stadium · 6:45pm · ION, The Spot Denver 3 · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, September 26 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Kansas City Current</div>
-            <div class="event-detail">CPKC Stadium · 10:30am · CBS, Paramount+ · AWAY (pub watch!)</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- OCTOBER 2026 -->
-      <div class="month-header">October 2026</div>
-
-      <div class="day">
-        <div class="day-label">Sunday, October 4 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at Chicago Stars</div>
-            <div class="event-detail">Northwestern Medicine Field · 2pm · CBS Sports Network, The Spot Denver 3 · AWAY (pub watch!)</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, October 17 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Angel City FC (Indigenous Peoples Heritage Night)</div>
-            <div class="event-detail">Centennial Stadium · 6:45pm · ION, The Spot Denver 3 · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day">
-        <div class="day-label">Saturday, October 24 <span class="badge summit">SUMMIT FC HOME</span></div>
-        <div class="event summit-home">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">🎟️ Summit FC vs Racing Louisville (Fan Appreciation Day)</div>
-            <div class="event-detail">Centennial Stadium · 4:30pm · ION, The Spot Denver 3 · HOME · Season tickets</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- NOVEMBER 2026 -->
-      <div class="month-header">November 2026</div>
-
-      <div class="day">
-        <div class="day-label">Sunday, November 1 <span class="badge summit">SUMMIT FC AWAY</span></div>
-        <div class="event summit-away">
-          <div class="event-cat cat-top"></div>
-          <div class="event-body">
-            <div class="event-name">⚽ Summit FC at NC Courage</div>
-            <div class="event-detail">First Horizon Stadium · 3pm · ESPN · AWAY (pub watch!)</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ONGOING RESOURCES -->
-      <div class="month-header" style="margin-top: 80px;">🎲 Roll for Date Night</div>
-      <p style="color: #718096; margin-bottom: 20px;">From your list! Roll a d20 for inspiration when you can't decide.</p>
-
-      <div style="background: #f7fafc; border-radius: 8px; padding: 20px; margin-bottom: 40px; overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse;">
-          <thead>
-            <tr style="border-bottom: 2px solid #e2e8f0;">
-              <th style="padding: 10px; text-align: left; color: #2d3748;">Roll</th>
-              <th style="padding: 10px; text-align: left; color: #2d3748;">Date Idea</th>
-              <th style="padding: 10px; text-align: left; color: #2d3748;">In/Out</th>
-              <th style="padding: 10px; text-align: left; color: #2d3748;">Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">1</td><td style="padding: 8px;">🕹️ Win a prize at an arcade</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">2</td><td style="padding: 8px;">🎨 Drawing date — zoo/aquarium, draw the fish</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">2–3 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">3</td><td style="padding: 8px;">🧱 Lego date night (prep needed)</td><td style="padding: 8px;">In</td><td style="padding: 8px;">1–3 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">4</td><td style="padding: 8px;">🍣 Sushi battleship dinner</td><td style="padding: 8px;">In</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">5</td><td style="padding: 8px;">🏺 Make an air dry clay sculpture</td><td style="padding: 8px;">In</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">6</td><td style="padding: 8px;">🐦 Paint bird houses</td><td style="padding: 8px;">In</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">7</td><td style="padding: 8px;">🏛️ Local museum (see museum list below!)</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">8</td><td style="padding: 8px;">🍦 Walk for ice cream</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">9</td><td style="padding: 8px;">🔍 Geocache</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–3 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">10</td><td style="padding: 8px;">🏨 Airbnb/hotel within 2hrs, book day-of, under $100</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">24hrs+</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">11</td><td style="padding: 8px;">🧘 Take a yoga class together</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">12</td><td style="padding: 8px;">💃 Go to a salsa class</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">13</td><td style="padding: 8px;">📜 Attend a poetry reading</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">14</td><td style="padding: 8px;">👕 Make each other hoodies</td><td style="padding: 8px;">In</td><td style="padding: 8px;">2–4 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">15</td><td style="padding: 8px;">🌅 Sunrise hike</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–3 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">16</td><td style="padding: 8px;">📸 Night photography (glow sticks, steel wool)</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">1–2 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">17</td><td style="padding: 8px;">🚗 Car movie in the mountains</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">2–3 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">18</td><td style="padding: 8px;">📍 Actionbound adventure in Golden or other city</td><td style="padding: 8px;">Out</td><td style="padding: 8px;">2–3 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">19</td><td style="padding: 8px;">🍄 Grow mushrooms at home</td><td style="padding: 8px;">In</td><td style="padding: 8px;">1 hr</td></tr>
-            <tr><td style="padding: 8px;">20</td><td style="padding: 8px;">🏙️ City Skylines board game — best map in 2hrs</td><td style="padding: 8px;">In</td><td style="padding: 8px;">2–3 hrs</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="month-header">🏛️ Local Museum Roll List</div>
-      <p style="color: #718096; margin-bottom: 20px;">When roll #7 comes up — pick from here! MCA & DAM are free with your membership.</p>
-
-      <div style="background: #f7fafc; border-radius: 8px; padding: 20px; margin-bottom: 40px; overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-          <thead>
-            <tr style="border-bottom: 2px solid #e2e8f0;">
-              <th style="padding: 10px; text-align: left; color: #2d3748;">#</th>
-              <th style="padding: 10px; text-align: left; color: #2d3748;">Museum</th>
-              <th style="padding: 10px; text-align: left; color: #2d3748;">Location</th>
-              <th style="padding: 10px; text-align: left; color: #2d3748;">Hours</th>
-              <th style="padding: 10px; text-align: left; color: #2d3748;">Cost</th>
-              <th style="padding: 10px; text-align: left; color: #2d3748;">Notes</th>
-            </tr>
-          </thead>
-          <tbody style="color: #4a5568;">
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">1</td><td style="padding: 8px;">Denver Art Museum (DAM)</td><td style="padding: 8px;">Golden Triangle</td><td style="padding: 8px;">Tue–Sun 10am–5pm</td><td style="padding: 8px;">FREE (members)</td><td style="padding: 8px;">World-class, always worth a visit</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">2</td><td style="padding: 8px;">Museum of Contemporary Art (MCA)</td><td style="padding: 8px;">LoDo</td><td style="padding: 8px;">Tue–Sun 11am–5pm</td><td style="padding: 8px;">FREE (members)</td><td style="padding: 8px;">Cutting-edge, great programs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">3</td><td style="padding: 8px;">Rocky Mountain Quilt Museum</td><td style="padding: 8px;">Golden</td><td style="padding: 8px;">Tue–Sat 10am–4pm</td><td style="padding: 8px;">$8/person</td><td style="padding: 8px;">Weird + close! Good for Golden day</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">4</td><td style="padding: 8px;">Sasquatch Outpost</td><td style="padding: 8px;">Bailey (~45 min)</td><td style="padding: 8px;">Daily 10am–6pm</td><td style="padding: 8px;">Free (donations)</td><td style="padding: 8px;">Quick + quirky roadtrip</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">5</td><td style="padding: 8px;">Forney Museum of Transportation</td><td style="padding: 8px;">Denver (N Colorado Blvd)</td><td style="padding: 8px;">Mon–Sat 10am–4pm</td><td style="padding: 8px;">$12/person</td><td style="padding: 8px;">Highly recommended — cars/trains/motorcycles, 2–3 hrs</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">6</td><td style="padding: 8px;">Kirkland Museum</td><td style="padding: 8px;">Denver (13th & Bannock)</td><td style="padding: 8px;">Tue–Sun 11am–5pm</td><td style="padding: 8px;">FREE (members)</td><td style="padding: 8px;">Decorative arts, beautiful building</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">7</td><td style="padding: 8px;">Wings Over the Rockies</td><td style="padding: 8px;">Denver (Lowry)</td><td style="padding: 8px;">Mon–Sat 10am–5pm, Sun 12–5pm</td><td style="padding: 8px;">$13/person</td><td style="padding: 8px;">Aircraft museum</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">8</td><td style="padding: 8px;">Denver Museum of Dolls, Miniatures & Toys</td><td style="padding: 8px;">Denver (S Gaylord St)</td><td style="padding: 8px;">Tue–Sat 10am–4pm, Sun 1–4pm</td><td style="padding: 8px;">$10/person</td><td style="padding: 8px;">Oddly fascinating</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">9</td><td style="padding: 8px;">Clock Tower Self-Guided Tour</td><td style="padding: 8px;">Denver (16th St Mall)</td><td style="padding: 8px;">Limited — book ahead</td><td style="padding: 8px;">$15/person</td><td style="padding: 8px;">D&F Tower, views of downtown, ~30 min</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">10</td><td style="padding: 8px;">Black American West Museum</td><td style="padding: 8px;">Denver (Five Points)</td><td style="padding: 8px;">Fri–Sat 10am–2pm</td><td style="padding: 8px;">$10/person</td><td style="padding: 8px;">Important history, smaller space</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">11</td><td style="padding: 8px;">Denver Firefighters Museum</td><td style="padding: 8px;">Denver (Tremont)</td><td style="padding: 8px;">Tue–Sat 11am–4pm</td><td style="padding: 8px;">$10/person</td><td style="padding: 8px;">Historic firehouse, fun — quick visit</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">12</td><td style="padding: 8px;">Sexploratorium</td><td style="padding: 8px;">Denver (E Colfax)</td><td style="padding: 8px;">Wed–Sun, hours vary</td><td style="padding: 8px;">$18/person</td><td style="padding: 8px;">Sex-positive, interactive</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">13</td><td style="padding: 8px;">Bishop's Castle</td><td style="padding: 8px;">Rye (~2.5 hrs south)</td><td style="padding: 8px;">Daylight hours year-round</td><td style="padding: 8px;">FREE (donations)</td><td style="padding: 8px;">Weird folk art castle — worth the drive + picnic</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">14</td><td style="padding: 8px;">Museo de las Américas</td><td style="padding: 8px;">Denver (Santa Fe Dr)</td><td style="padding: 8px;">Tue–Fri 10am–5pm, Sat 12–5pm</td><td style="padding: 8px;">$8/person</td><td style="padding: 8px;">Latin American art/culture, rotating exhibits</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">15</td><td style="padding: 8px;">American Museum of Western Art</td><td style="padding: 8px;">Denver (Navajo St)</td><td style="padding: 8px;">Mon, Wed, Fri 10am–4:30pm</td><td style="padding: 8px;">$5/person</td><td style="padding: 8px;">Anschutz Collection</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">16</td><td style="padding: 8px;">Buffalo Bill Museum</td><td style="padding: 8px;">Golden</td><td style="padding: 8px;">Daily 9am–5pm (winter 10am–4pm)</td><td style="padding: 8px;">$5/person</td><td style="padding: 8px;">Combine with a hike!</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">17</td><td style="padding: 8px;">Dikeou Collection</td><td style="padding: 8px;">Denver (Larimer Square)</td><td style="padding: 8px;">Wed–Fri 11am–5pm</td><td style="padding: 8px;">FREE</td><td style="padding: 8px;">Contemporary art, small space</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">18</td><td style="padding: 8px;">Vehicle Vault</td><td style="padding: 8px;">Parker (~40 min)</td><td style="padding: 8px;">By appointment only</td><td style="padding: 8px;">$15–20/person</td><td style="padding: 8px;">Private exotic car collection — book ahead</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">19</td><td style="padding: 8px;">Museum of Illusions</td><td style="padding: 8px;">Denver (16th St Mall)</td><td style="padding: 8px;">Daily 10am–9pm</td><td style="padding: 8px;">$28/person</td><td style="padding: 8px;">Fun for a random afternoon</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">20</td><td style="padding: 8px;">Molly Brown House Museum</td><td style="padding: 8px;">Denver</td><td style="padding: 8px;">Tue–Sat 10am–5pm, Sun 12–4pm (Thu until 7pm)</td><td style="padding: 8px;">$17 self-guided / $21 tour</td><td style="padding: 8px;">Classic Denver history</td></tr>
-            <tr style="border-bottom: 1px solid #edf2f7;"><td style="padding: 8px;">21</td><td style="padding: 8px;">Colorado Judicial Learning Center</td><td style="padding: 8px;">Denver (Civic Center)</td><td style="padding: 8px;">Mon–Fri 10am–3pm</td><td style="padding: 8px;">FREE</td><td style="padding: 8px;">Small, educational, quick visit</td></tr>
-            <tr><td style="padding: 8px;">22</td><td style="padding: 8px;">The Cell</td><td style="padding: 8px;">Denver (Golden Triangle)</td><td style="padding: 8px;">Check website</td><td style="padding: 8px;">Varies by event</td><td style="padding: 8px;">Near DAM — double feature potential</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="month-header">📍 Ongoing Attractions & Reminders</div>
-
-      <div style="background: #f7fafc; border-radius: 8px; padding: 24px; margin-bottom: 40px;">
-        
-        <h3 style="color: #2d3748; font-size: 1.1rem; margin-bottom: 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">🔁 Recurring Weekly</h3>
-        <div style="margin-bottom: 24px;">
-          <div style="margin-bottom: 12px; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #38a169;">
-            <strong style="color: #2d3748;">⭐ Off the Cuff</strong><br>
-            <span style="color: #718096; font-size: 0.9rem;">Wednesdays 9pm–1:30am · Meadowlark Bar · Improv music · STELLAR!</span>
-          </div>
-          <div style="margin-bottom: 12px; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #4299e1;">
-            <strong style="color: #2d3748;">Don't Tell Comedy at Broderick</strong><br>
-            <span style="color: #718096; font-size: 0.9rem;">Thursdays · Washington Park · Ongoing secret shows</span>
-          </div>
-        </div>
-
-        <h3 style="color: #2d3748; font-size: 1.1rem; margin-bottom: 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">🎡 Always Available</h3>
-        <div style="margin-bottom: 24px;">
-          <div style="margin-bottom: 12px; padding: 12px; background: white; border-radius: 6px;">
-            <strong style="color: #2d3748;">Adams Mystery Playhouse</strong><br>
-            <span style="color: #718096; font-size: 0.9rem;">Check calendar for Fri & Sat 6pm shows</span>
-          </div>
-          <div style="margin-bottom: 12px; padding: 12px; background: white; border-radius: 6px;">
-            <strong style="color: #2d3748;">Slick City Adult Night</strong><br>
-            <span style="color: #718096; font-size: 0.9rem;">Lakewood · Check their calendar for adult nights</span>
-          </div>
-          <div style="margin-bottom: 12px; padding: 12px; background: white; border-radius: 6px;">
-            <strong style="color: #2d3748;">Beat The Bomb</strong><br>
-            <span style="color: #718096; font-size: 0.9rem;">Real-life video game experience · Through August 2026</span>
-          </div>
-        </div>
-
-        <h3 style="color: #2d3748; font-size: 1.1rem; margin-bottom: 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">🎨 Monthly Recurring</h3>
-        <div>
-          <div style="margin-bottom: 12px; padding: 12px; background: white; border-radius: 6px; border-left: 4px solid #ec4899;">
-            <strong style="color: #2d3748;">First Fridays</strong><br>
-            <span style="color: #718096; font-size: 0.9rem;">Monthly on the 1st Friday · Santa Fe Art District, RiNo, Golden Triangle</span>
-          </div>
-          <div style="margin-bottom: 12px; padding: 12px; background: white; border-radius: 6px;">
-            <strong style="color: #2d3748;">Second Saturday Art Walk</strong><br>
-            <span style="color: #718096; font-size: 0.9rem;">Monthly on the 2nd Saturday · Cherry Creek North</span>
-          </div>
-          <div style="margin-bottom: 12px; padding: 12px; background: white; border-radius: 6px;">
-            <strong style="color: #2d3748;">Sundays on Santa Fe</strong><br>
-            <span style="color: #718096; font-size: 0.9rem;">Monthly on the last Sunday · Santa Fe Art District gallery crawl</span>
-          </div>
-        </div>
-      </div>
 
+<header>
+  <div class="header-stripe"></div>
+  <div class="header-inner">
+    <h1>Denver Events<br><span>April – October 2026</span></h1>
+    <div class="subtitle">⛰ Golden · Denver · The Front Range · All the Good Stuff</div>
+    <div class="updated-tag">Updated April 21, 2026</div>
+  </div>
+</header>
+
+<div class="legend-bar">
+  <span class="legend-label">Legend:</span>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--burnt-orange);"></div> Summit FC Home</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--warm-amber);"></div> Summit FC Away</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--avocado);"></div> FIFA World Cup</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--dusty-rose);"></div> Music</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--harvest-gold);"></div> Comedy</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--teal-70s);"></div> Art / Museum</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--mushroom);"></div> Theater</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--brick);"></div> Film</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:var(--sage);"></div> Special</div>
+</div>
+
+<div class="container">
+
+<!-- ===================== APRIL 2026 ===================== -->
+<div class="month-block">
+  <div class="month-header">April 2026 <span class="month-count">54 events</span></div>
+
+  <div class="date-group">
+    <div class="date-label">April 21 <span class="dow">· Tuesday · TODAY</span></div>
+    <div class="event cat-summit-away"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC — AWAY (Frozen Four Watch)</div><div class="event-venue">Watch at home/pub</div><div class="event-note">Go DU Pioneers! vs Michigan Wolverines</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Paul Gilbert</div><div class="event-venue">The Oriental Theater</div><div class="event-note">Guitar virtuoso · 8pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">F3T Fly Fishing Film Showing</div><div class="event-venue">Stranahan's Distillery</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mindful Looking</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Free w/ membership</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Spring Book Buzz w/ Denver Public Library</div><div class="event-venue">Fiction Beer Co.</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Great Debate</div><div class="event-venue">Buntport Theater</div><div class="event-note">Simon Says vs Garfunkel · 7:30pm</div></div></div>
+    <div class="event cat-wellness"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lunchtime Vinyasa Flow Yoga</div><div class="event-venue">Denver Botanic Gardens</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Eco-Cycle: Earth Day Kickoff Film — Single Use Planet</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$12–$14 · 6pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mountains on Stage Summer Edition 2026</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$20–$26 · 7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 22 <span class="dow">· Wednesday · 🌍 EARTH DAY</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Terror (hardcore legends)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">6pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Earth Day Flower Mandala Workshop</div><div class="event-venue">Stanley Marketplace</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mud Social — Pottery Class</div><div class="event-venue">Bierstadt Lagerhaus</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Art Crawl: ABC's of Curating</div><div class="event-venue">Clyfford Still Museum</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Ignite Denver 44</div><div class="event-venue">The Bug Theatre</div><div class="event-note">20 slides × 15 sec each · 7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 23 <span class="dow">· Thursday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Thursdays at Broderick</div><div class="event-venue">Washington Park</div><div class="event-note">Secret show</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">EXPOSED presents: DRAGONFISH by Soleil Kohl</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Underwater grief odyssey · 7:30pm</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">2026 PEEK: The Crystal Ball</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$175 · 6:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 24 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">He Is Legend</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy</div><div class="event-venue">Five Points</div><div class="event-note">Secret show</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Teletunes Music Video Dance Party</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Nerd Nite</div><div class="event-venue">The Bug Theatre</div><div class="event-note">3 experts · 20 min each · beer · 7pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Steve Vanderploeg Comedy</div><div class="event-venue">Gnarly's — Golden</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Women+Film Festival</div><div class="event-venue">Sie FilmCenter</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Love That Remains (film)</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 3:30pm · runs Apr 24–26</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">La Scala: The Force of Destiny (film)</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 6pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Zikr Dance Ensemble: 'Runes'</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$23–$46 · 7:30pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Cinema Youth Advisory Board: Everything Everywhere All at Once</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 8:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 25 <span class="dow">· Saturday</span></div>
+    <div class="event cat-summit-home"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC HOME — vs San Diego Wave FC</div><div class="event-venue">DICK'S Sporting Goods Park</div><div class="event-note">6:45pm · Colorado 150th Anniversary · Scarf giveaway first 5K fans!</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lebanon Hanover (dark wave duo)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Defeated Sanity</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">ANTI-ICE UNDERGROUND FUNDRAISER</div><div class="event-venue">Creepatorium</div><div class="event-note">Benefits CO Immigrant Rights Coalition · 8:30pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Bowls with the Bards: King Lear (Night 1)</div><div class="event-venue">The Three Leaches</div><div class="event-note">Cannabis-enhanced Shakespeare · 7:30pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Making Moves: Student Choreography Showcase</div><div class="event-venue">Dairy Arts Center (Sie FilmCenter)</div><div class="event-note">11am · $14.95</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Ars Nova Singers: RUBYFire — Shared Visions</div><div class="event-venue">Dairy Arts Center</div><div class="event-note">7:30pm · $14–$46</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 26 <span class="dow">· Sunday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Science on Screen: UN-BEE-LEIVEABLE Secrets of Bees</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE · 12pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Hideout One Year Anniversary Showcase</div><div class="event-venue">The Oriental Theater</div><div class="event-note">13+ · Dance performance · 6:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Vampires Everywhere</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Horror Book Club</div><div class="event-venue">Creepatorium</div><div class="event-note">12pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Bowls with the Bards: King Lear (Night 2)</div><div class="event-venue">The Three Leaches</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 27 <span class="dow">· Monday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Best Of The Fests (runs Apr 27–28)</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$17.25 · 4:30pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Freak Train</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Denver's longest-running open-stage variety show · 8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 28 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Jason D Williams</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rosegarden Funeral Party</div><div class="event-venue">HQ Denver</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 29 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Return of Jimmy Pardo</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Horseshoe (film · runs Apr 29–May 2)</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 4:30pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">PEOPLE of the SACRED LAND — Premiere &amp; Discussion</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE · 5:30pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Spacewoman (film · runs Apr 29–May 2)</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Drifting Roots</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">April 30 <span class="dow">· Thursday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Thursdays at Broderick</div><div class="event-venue">Washington Park</div><div class="event-note">Secret show</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Local Listens: Queer Lineage — Staged Readings</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">BETC: Mary Jane — Preview Night</div><div class="event-venue">Dairy Arts Center</div><div class="event-note">$17–$48 · 7pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Upstart Crow: Tartuffe by Moliere (Opens tonight!)</div><div class="event-venue">Dairy Arts Center</div><div class="event-note">$28–$32 · runs thru May 17</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Toaster Bath</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== MAY 2026 ===================== -->
+<div class="section-divider"></div>
+<div class="month-block">
+  <div class="month-header">May 2026 <span class="month-count">73 events</span></div>
+
+  <div class="date-group">
+    <div class="date-label">May 1 <span class="dow">· Friday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Pulp MX Show — Live!</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Traitrs</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🏃 Denver Fashion Week Opens (May 1–9)</div><div class="event-venue">Various venues</div><div class="event-note">8 runway shows</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Local Theater Company: Queer Lineage Readings</div><div class="event-venue">Dairy Arts Center</div><div class="event-note">Free–$57 · 7:30pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Friday Night Weird: Nirvanna The Band The Show The Movie</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 8:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 2 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Emo Vs Pop Punk — Myspace Party</div><div class="event-venue">The Oriental Theater</div><div class="event-note">Music videos on big screen · 8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">DM101 — Depeche Mode Tribute</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Slime Court Live!</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Sue your friends for real or imagined slights · 8pm</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Mini Derby 🐴</div><div class="event-venue">Denver</div><div class="event-note">Live mini horse races!</div></div></div>
+    <div class="event cat-festival"><div class="event-dot"></div><div class="event-main"><div class="event-title">Cinco de Mayo Festival (opening)</div><div class="event-venue">Civic Center Park</div><div class="event-note">Largest in Colorado</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Botanic Gardens: Japanese Garden Fundamentals + Spring Bulbs + Pollinators + Tomatoes</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">Multiple workshops all day</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Boulder Ensemble Theatre Company: MAD LIBrarians</div><div class="event-venue">Dairy Arts Center</div><div class="event-note">FREE · 10:30am</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Man Who Saves the World?</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$15 · 2pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 3 <span class="dow">· Sunday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Trio Los Panchos (legendary bolero trio)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7 decades of musical legacy · 5pm</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">HQ Garage Sale</div><div class="event-venue">HQ Denver</div><div class="event-note">2pm</div></div></div>
+    <div class="event cat-recurring"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎨 Sundays on Santa Fe — Gallery Crawl</div><div class="event-venue">Santa Fe Art District</div><div class="event-note">Last Sunday of month · free</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 4 <span class="dow">· Monday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Classics with Jeffrey Kash: Hotel</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 5 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Master Boot Record</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Drop-In Drawing with Anna Kaye</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Free w/ membership</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 6 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Black Mirror / Red Carpet — Improvised Sci-Fi Horror</div><div class="event-venue">Gnarly's — Golden</div><div class="event-note">With Mines Spring 2026 Robots Ethics Class · close to home!</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">DaBaby</div><div class="event-venue">Summit Music Hall</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Kottonmouth Kings</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Blue Trail (film)</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 4:30pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rebel With a Clause (film)</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">$7–$14 · 7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 7 <span class="dow">· Thursday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Botanic Gardens Spring Plant Sale Preview Party</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">Members only · 4–7:30pm · exclusive early access</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Thursdays at Broderick</div><div class="event-venue">Washington Park</div><div class="event-note">Secret show</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mike Watt and the Missingmen</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 8 <span class="dow">· Friday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Danae Hays: The Buckwild Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mike Watt and the Missingmen (Night 2)</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Ryan Conner Comedy</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Late Late Show, Prime · 8pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy</div><div class="event-venue">Five Points</div><div class="event-note">Secret show</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🌱 Spring Plant Sale</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">8am–5pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Frequent Flyers Aerial Dance: Down the Rabbit Hole</div><div class="event-venue">Dairy Arts Center</div><div class="event-note">$24–$29 · 7pm · runs May 8–9</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Friday Night Weird: Dead Lover</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 9 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">U2 &amp; Shinedown Tributes!</div><div class="event-venue">The Oriental Theater</div><div class="event-note">Bullet the Blue Sky + Sound of Madness · 6:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Uada + Mortiis</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Black Gold (theater)</div><div class="event-venue">The Bug Theatre</div><div class="event-note">6pm</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🌱 Spring Plant Sale (Day 2)</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">8am–5pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 13 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">JACQUELINE NOVAK: 2026 Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">Netflix comedian · all new show · 7:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Chet Faker</div><div class="event-venue">Summit Music Hall</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 14 <span class="dow">· Thursday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Thursdays at Broderick</div><div class="event-venue">Washington Park</div><div class="event-note">Secret show</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 15 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pop-Punk Tribute: White Stripes, Fall Out Boy, Sum 41, Jimmy Eat World &amp; more</div><div class="event-venue">The Oriental Theater</div><div class="event-note">6:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">All 80s Alternative Night — DJ Eli all vinyl</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm–1:30am</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 16 <span class="dow">· Saturday</span></div>
+    <div class="event cat-summit-home"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC HOME — vs Orlando Pride</div><div class="event-venue">DICK'S Sporting Goods Park</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Chris Fest! DAY 1</div><div class="event-venue">The Oriental Theater</div><div class="event-note">5:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">All Your Friends (DJ Eli 80s alternative)</div><div class="event-venue">HQ Denver</div><div class="event-note">8:30pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Drawing: Discovering Butterflies w/ Butterfly Pavilion (Part 1 of 2)</div><div class="event-venue">Denver Art Museum</div><div class="event-note">10am–2pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 17 <span class="dow">· Sunday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Chris Fest! DAY 2</div><div class="event-venue">The Oriental Theater</div><div class="event-note">4:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 19 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Windwaker + Colorblind + If Not For Me</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Logan Lecture: Hayv Kahraman</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Iraqi refugee artist · free w/ membership</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 20 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Decibel Magazine Tour 2026</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Stop.Drop.Rewind</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 21 <span class="dow">· Thursday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Emerging Filmmaker's Project</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Anti Omega</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Buntport Theater: THIS IS THE DAY '91 ★ WORLD PREMIERE</div><div class="event-venue">Buntport Theater</div><div class="event-note">World premiere comedy opening night</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 22 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Neyla Pekarek — Vaudevillian extravaganza</div><div class="event-venue">The Oriental Theater</div><div class="event-note">Former Lumineers · The Queen of Magic EP · magic acts + barbershop quartet · 7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">May Be Fern and Covergurls</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 23 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Screeching Weasel (punk rock)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Golden Ticket Tour</div><div class="event-venue">Gnarly's — Golden</div><div class="event-note">As seen on KillTony and Netflix</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Drawing: Discovering Butterflies (Part 2 of 2)</div><div class="event-venue">Denver Art Museum</div><div class="event-note">10am–2pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 24 <span class="dow">· Sunday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Tim-A-Thon! Benefit Show</div><div class="event-venue">The Oriental Theater</div><div class="event-note">6pm · All proceeds to Tim's family</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 25 <span class="dow">· Monday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Prince Daddy And The Hyena</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 26 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Artist Talk with Dabin Ahn</div><div class="event-venue">Denver Art Museum</div><div class="event-note">AAPI Heritage Month · free w/ membership</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 27 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">FIINKA — Ukrainian artist, Hutsul/Carpathian traditions</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 29 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">All Star Tribute to Chad Aman!</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Quakes</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 30 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Tributes to Depeche Mode, Filter, and INXS!</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Vines &amp; Groundcovers + Converting Lawn to Xeriscape</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">Multiple workshops</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Advanced Bonsai Design — A Performance</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">1–4pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">ALT! The Party (nu metal / grunge / alt rock)</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">May 31 <span class="dow">· Sunday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Film Score Fest</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pet Traits + Discount Local</div><div class="event-venue">HQ Denver</div><div class="event-note">3pm</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== JUNE 2026 ===================== -->
+<div class="section-divider"></div>
+<div class="month-block">
+  <div class="month-header">June 2026 <span class="month-count">32 events</span></div>
+
+  <div class="date-group">
+    <div class="date-label">June 2 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Anderman Photography Lecture: Alexey Titarenko</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Free w/ membership</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 3 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Ladytron 'Paradises' Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Gozu + Restless Spirit</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 4–7 <span class="dow">· Thu–Sun</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Mixed Doubles Cash Spiel — Curling Tournament</div><div class="event-venue">Denver Curling Club</div><div class="event-note">$5,000 cash purse · 20 teams</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 5 <span class="dow">· Friday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lucha Libre &amp; Laughs: Eternal Recurrence (Night 1 of 2)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">18+ · 13th anniversary · 8pm</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🌹 Carnivale De Sensuale — SECRET ROOFTOP SHOW</div><div class="event-venue">Secret Rooftop, downtown Denver</div><div class="event-note">125 seats only · location revealed 1 week before!</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 6 <span class="dow">· Saturday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lucha Libre &amp; Laughs: Eternal Recurrence (Night 2)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">18+ · 8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Adelitas Way</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 7 <span class="dow">· Sunday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Elders — Celtic/Americana Rock</div><div class="event-venue">The Oriental Theater</div><div class="event-note">4:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">CD Ghost</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 9 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Seahaven</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 11 <span class="dow">· Thursday · ⚽ WORLD CUP STARTS!</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Mexico vs South Africa — OPENING MATCH!</div><div class="event-venue">Sie FilmCenter · co-hosted by Denver Film &amp; Soccer Electric</div><div class="event-note">FREE Watch Party · 1:00 PM · 2510 E Colfax Ave</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 12 <span class="dow">· Friday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: United States vs Paraguay 🇺🇸</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 7:00 PM</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rockstar Pole Fitness: Strange Disco</div><div class="event-venue">The Oriental Theater</div><div class="event-note">Pole &amp; aerial showcase · 7:30pm</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lumina — sensory experience night</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 13 <span class="dow">· Saturday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Brazil vs Morocco</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 4:00 PM</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Flatline Fest: Extreme Metal Festival (Night 1 of 2)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">5:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 14 <span class="dow">· Sunday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Netherlands vs Japan</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 2:00 PM</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 16 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Behind the Baton LIVE</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Music + art of the American West · 3pm &amp; 6:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 17 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Bob Log III</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 18 <span class="dow">· Thursday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Mexico vs South Korea</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 7:00 PM</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 19 <span class="dow">· Friday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: United States vs Australia 🇺🇸</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 1:00 PM</div></div></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Brazil vs Haiti</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 6:30 PM</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Tributes to Pearl Jam, Foo Fighters &amp; more!</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Cruel Mourning — Album Release</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 20 <span class="dow">· Saturday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Germany vs Ivory Coast</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 2:00 PM</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Teletunes Music Video Dance Party</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 24 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Bug Hunter / The Narcissist Cookbook + Jam Mechanics</div><div class="event-venue">The Oriental Theater</div><div class="event-note">VIP pre-show Q&amp;A available · 7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 25 <span class="dow">· Thursday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Türkiye vs United States 🇺🇸</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 8:00 PM</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 26 <span class="dow">· Friday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Uruguay vs Spain</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 6:00 PM</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Kelsey Karter &amp; The Heroines</div><div class="event-venue">HQ Denver</div><div class="event-note">8:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">June 27 <span class="dow">· Saturday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: Panama vs England</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 3:00 PM</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== JULY 2026 ===================== -->
+<div class="section-divider"></div>
+<div class="month-block">
+  <div class="month-header">July 2026 <span class="month-count">9 events</span></div>
+
+  <div class="date-group">
+    <div class="date-label">July 7 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">LA Guns</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">July 8 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Total Chaos</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">July 10 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">War Crown (progressive doom metal)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">July 14 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: SEMIFINAL — W97 vs W98</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 1:00 PM</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">July 15 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ FIFA WORLD CUP: SEMIFINAL — W99 vs W100</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 1:00 PM</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">July 17 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Void Atlas</div><div class="event-venue">HQ Denver</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">July 18 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">All 80s Alternative Night — DJ Eli all vinyl</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm–1:30am</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">July 19 <span class="dow">· Sunday · 🏆 WORLD CUP FINAL</span></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">🏆 FIFA WORLD CUP FINAL — W101 vs W102</div><div class="event-venue">Sie FilmCenter</div><div class="event-note">FREE Watch Party · 1:00 PM · THE BIG ONE!</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">July 26 <span class="dow">· Sunday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Riki Rachtman (former MTV Headbangers Ball host)</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== AUGUST 2026 ===================== -->
+<div class="section-divider"></div>
+<div class="month-block">
+  <div class="month-header">August 2026 <span class="month-count">8 events</span></div>
+
+  <div class="date-group">
+    <div class="date-label">August 7 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Ded</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">August 8 <span class="dow">· Saturday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">DoKnow &amp; DaHawmies Comedy Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">August 11 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Shonen Knife</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">August 13 <span class="dow">· Thursday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Foundations of Bonsai in Colorado</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">5:30–7:30pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">August 15 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mile High Power Fest</div><div class="event-venue">The Oriental Theater</div><div class="event-note">3pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">August 18 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Anderman Photography Lecture: Jungjin Lee</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Free w/ membership</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">August 21 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Teletunes Music Video Dance Party</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">August 22 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">80's Bash at Mile High</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== SEPT / OCT ===================== -->
+<div class="section-divider"></div>
+<div class="month-block">
+  <div class="month-header">September – October 2026</div>
+  <div class="date-group">
+    <div class="date-label">September 11 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Unsane</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+  </div>
+  <div class="date-group">
+    <div class="date-label">October 22 <span class="dow">· Thursday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Daniel Sloss (comedy)</div><div class="event-venue">Paramount Theatre</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== ROLL SECTIONS ===================== -->
+<div class="section-divider"></div>
+
+<div class="section-big-header">🎲 The Fun Stuff</div>
+<div class="section-big-sub">Roll for it. Pick one. Go.</div>
+
+<!-- ROLL FOR DATES -->
+<div class="roll-section">
+  <div class="roll-title">🎲 Roll for Dates</div>
+  <div class="roll-sub">Can't think of anything? Roll a d20.</div>
+
+  <style>
+    .roll-table { width: 100%; border-collapse: collapse; position: relative; z-index: 1; }
+    .roll-table th {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--tan);
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(232,184,75,0.25);
+    }
+    .roll-table td {
+      padding: 9px 12px;
+      font-size: 0.8rem;
+      color: var(--cream);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      vertical-align: middle;
+    }
+    .roll-table tr:last-child td { border-bottom: none; }
+    .roll-table tr:hover td { background: rgba(255,255,255,0.05); }
+    .roll-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--harvest-gold);
+      width: 36px;
+      text-align: center;
+    }
+    .roll-idea { font-weight: 700; color: var(--cream); }
+    .roll-tag {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 10px;
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+    .tag-in  { background: rgba(107,124,45,0.4);  color: #c8d89a; }
+    .tag-out { background: rgba(45,112,104,0.4);  color: #8fd6ce; }
+    .tag-day { background: rgba(217,139,47,0.35); color: #f5cb7a; }
+    .tag-night { background: rgba(155,58,46,0.45); color: #e8a99e; }
+    .tag-any { background: rgba(139,115,85,0.35); color: #d4b896; }
+    .tag-prep { background: rgba(196,123,110,0.35); color: #f0c0b0; }
+  </style>
+
+  <table class="roll-table">
+    <thead>
+      <tr>
+        <th style="width:44px;">#</th>
+        <th>Date Idea</th>
+        <th>When</th>
+        <th>Time</th>
+        <th>In/Out</th>
+        <th>Prep?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="roll-num">1</td>
+        <td><span class="roll-idea">Win a prize at an arcade</span></td>
+        <td><span class="roll-tag tag-any">anytime</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">2</td>
+        <td><span class="roll-idea">Drawing date — zoo or aquarium, draw the fish</span></td>
+        <td><span class="roll-tag tag-day">daytime</span></td>
+        <td>2–3 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">3</td>
+        <td><span class="roll-idea">Lego date night</span></td>
+        <td><span class="roll-tag tag-any">anytime</span></td>
+        <td>1–3 hrs</td>
+        <td><span class="roll-tag tag-in">in</span></td>
+        <td><span class="roll-tag tag-prep">med</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">4</td>
+        <td><span class="roll-idea">Sushi Battleship dinner</span></td>
+        <td><span class="roll-tag tag-any">anytime</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-in">in</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">5</td>
+        <td><span class="roll-idea">Make an air dry clay sculpture</span></td>
+        <td><span class="roll-tag tag-any">anytime</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-in">in</span></td>
+        <td><span class="roll-tag tag-prep">min</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">6</td>
+        <td><span class="roll-idea">Paint birdhouses</span></td>
+        <td><span class="roll-tag tag-any">anytime</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-in">in</span></td>
+        <td><span class="roll-tag tag-prep">min</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">7</td>
+        <td><span class="roll-idea">Go to a local museum</span> <em style="font-size:0.73rem;color:var(--tan);">→ roll the museum table!</em></td>
+        <td><span class="roll-tag tag-day">daytime</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">8</td>
+        <td><span class="roll-idea">Walk for ice cream</span></td>
+        <td><span class="roll-tag tag-any">anytime</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">9</td>
+        <td><span class="roll-idea">Geocache</span></td>
+        <td><span class="roll-tag tag-any">anytime</span></td>
+        <td>1–3 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">10</td>
+        <td><span class="roll-idea">Find an Airbnb or hotel within 2 hrs for under $100 — book it same morning</span></td>
+        <td><span class="roll-tag tag-day">morning</span></td>
+        <td>24 hrs+</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td><span class="roll-tag tag-prep">med</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">11</td>
+        <td><span class="roll-idea">Take a yoga class together</span></td>
+        <td><span class="roll-tag tag-day">daytime</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td><span class="roll-tag tag-prep">min</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">12</td>
+        <td><span class="roll-idea">Go to a salsa class</span></td>
+        <td><span class="roll-tag tag-night">night</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td><span class="roll-tag tag-prep">min</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">13</td>
+        <td><span class="roll-idea">Attend a poetry reading</span></td>
+        <td><span class="roll-tag tag-night">night</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td><span class="roll-tag tag-prep">min</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">14</td>
+        <td><span class="roll-idea">Make each other hoodies</span></td>
+        <td><span class="roll-tag tag-day">daytime</span></td>
+        <td>2–4 hrs</td>
+        <td><span class="roll-tag tag-in">in</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">15</td>
+        <td><span class="roll-idea">Sunrise hike</span></td>
+        <td><span class="roll-tag tag-day">morning</span></td>
+        <td>1–3 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td><span class="roll-tag tag-prep">min</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">16</td>
+        <td><span class="roll-idea">Night photography — glow sticks, fire, steel wool</span></td>
+        <td><span class="roll-tag tag-night">night</span></td>
+        <td>1–2 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td><span class="roll-tag tag-prep">min</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">17</td>
+        <td><span class="roll-idea">Car movie in the mountains</span></td>
+        <td><span class="roll-tag tag-night">night</span></td>
+        <td>2–3 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td><span class="roll-tag tag-prep">min</span></td>
+      </tr>
+      <tr>
+        <td class="roll-num">18</td>
+        <td><span class="roll-idea">Pick an Actionbound and do it for the day in Golden or another city</span></td>
+        <td><span class="roll-tag tag-day">daytime</span></td>
+        <td>2–3 hrs</td>
+        <td><span class="roll-tag tag-out">out</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">19</td>
+        <td><span class="roll-idea">Grow mushrooms at home</span></td>
+        <td><span class="roll-tag tag-any">anytime</span></td>
+        <td>1 hr</td>
+        <td><span class="roll-tag tag-in">in</span></td>
+        <td>none</td>
+      </tr>
+      <tr>
+        <td class="roll-num">20</td>
+        <td><span class="roll-idea">City skylines: same map, each complete for best map in 2 hrs — OR themed build night</span></td>
+        <td><span class="roll-tag tag-night">night</span></td>
+        <td>2–3 hrs</td>
+        <td><span class="roll-tag tag-in">in</span></td>
+        <td>none</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MUSEUM ROLL -->
+<div class="museum-section">
+  <div class="museum-section-title">🏛️ Roll for Museums</div>
+  <div class="museum-note">When you roll a 7 — or just feel like it — pick a number and go. MCA, DAM &amp; Kirkland are FREE with your membership. Denver Natural History Museum — you're members!</div>
+
+  <div class="museum-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Museum</th>
+          <th>Location</th>
+          <th>Hours</th>
+          <th>Cost</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Denver Art Museum (DAM)</td><td>Golden Triangle</td><td>Tue–Sun 10am–5pm</td><td><span class="free-badge">FREE</span> members</td><td>World-class, always worth a visit</td></tr>
+        <tr><td>2</td><td>Museum of Contemporary Art (MCA)</td><td>LoDo</td><td>Tue–Sun 11am–5pm</td><td><span class="free-badge">FREE</span> members</td><td>Cutting-edge, great programs</td></tr>
+        <tr><td>3</td><td>Denver Museum of Nature &amp; Science</td><td>City Park</td><td>Daily 9am–5pm</td><td><span class="free-badge">FREE</span> members</td><td>You're members! IMAX, exhibits, all of it</td></tr>
+        <tr><td>4</td><td>Rocky Mountain Quilt Museum</td><td>Golden</td><td>Tue–Sat 10am–4pm</td><td>$8/person</td><td>Weird + close! Good for a Golden day</td></tr>
+        <tr><td>5</td><td>Sasquatch Outpost</td><td>Bailey (~45 min)</td><td>Daily 10am–6pm</td><td>Free (donations)</td><td>Quick + quirky roadtrip</td></tr>
+        <tr><td>6</td><td>Forney Museum of Transportation</td><td>Denver (N Colorado Blvd)</td><td>Mon–Sat 10am–4pm</td><td>$12/person</td><td>Highly recommended — cars/trains/motorcycles, 2–3 hrs</td></tr>
+        <tr><td>7</td><td>Kirkland Museum</td><td>Denver (13th &amp; Bannock)</td><td>Tue–Sun 11am–5pm</td><td><span class="free-badge">FREE</span> members</td><td>Decorative arts, beautiful building</td></tr>
+        <tr><td>8</td><td>Wings Over the Rockies</td><td>Denver (Lowry)</td><td>Mon–Sat 10am–5pm, Sun 12–5pm</td><td>$13/person</td><td>Aircraft museum</td></tr>
+        <tr><td>9</td><td>Denver Museum of Dolls, Miniatures &amp; Toys</td><td>Denver (S Gaylord St)</td><td>Tue–Sat 10am–4pm, Sun 1–4pm</td><td>$10/person</td><td>Oddly fascinating</td></tr>
+        <tr><td>10</td><td>Clock Tower Self-Guided Tour</td><td>Denver (16th St Mall)</td><td>Limited — book ahead</td><td>$15/person</td><td>D&amp;F Tower, views of downtown, ~30 min</td></tr>
+        <tr><td>11</td><td>Black American West Museum</td><td>Denver (Five Points)</td><td>Fri–Sat 10am–2pm</td><td>$10/person</td><td>Important history, smaller space</td></tr>
+        <tr><td>12</td><td>Denver Firefighters Museum</td><td>Denver (Tremont)</td><td>Tue–Sat 11am–4pm</td><td>$10/person</td><td>Historic firehouse, fun — quick visit</td></tr>
+        <tr><td>13</td><td>Sexploratorium</td><td>Denver (E Colfax)</td><td>Wed–Sun, hours vary</td><td>$18/person</td><td>Sex-positive, interactive</td></tr>
+        <tr><td>14</td><td>Bishop's Castle</td><td>Rye (~2.5 hrs south)</td><td>Daylight hours year-round</td><td>FREE (donations)</td><td>Weird folk art castle — worth the drive + picnic</td></tr>
+        <tr><td>15</td><td>Museo de las Américas</td><td>Denver (Santa Fe Dr)</td><td>Tue–Fri 10am–5pm, Sat 12–5pm</td><td>$8/person</td><td>Latin American art/culture, rotating exhibits</td></tr>
+        <tr><td>16</td><td>American Museum of Western Art</td><td>Denver (Navajo St)</td><td>Mon, Wed, Fri 10am–4:30pm</td><td>$5/person</td><td>Anschutz Collection</td></tr>
+        <tr><td>17</td><td>Buffalo Bill Museum</td><td>Golden</td><td>Daily 9am–5pm (winter 10am–4pm)</td><td>$5/person</td><td>Combine with a hike!</td></tr>
+        <tr><td>18</td><td>Dikeou Collection</td><td>Denver (Larimer Square)</td><td>Wed–Fri 11am–5pm</td><td>FREE</td><td>Contemporary art, small space</td></tr>
+        <tr><td>19</td><td>Museum of Illusions</td><td>Denver (16th St Mall)</td><td>Daily 10am–9pm</td><td>$28/person</td><td>Fun for a random afternoon</td></tr>
+        <tr><td>20</td><td>Molly Brown House Museum</td><td>Denver</td><td>Tue–Sat 10am–5pm, Sun 12–4pm</td><td>$17–$21</td><td>Classic Denver history</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ONGOING ATTRACTIONS -->
+<div class="ongoing-section">
+  <div class="ongoing-title">📍 Ongoing &amp; Recurring</div>
+
+  <div class="ongoing-group">
+    <div class="ongoing-group-title">🔁 Every Week</div>
+    <div class="ongoing-item green">
+      <strong>⭐ Off the Cuff — Improv Music</strong>
+      <span>Wednesdays 9pm–1:30am · Meadowlark Bar · STELLAR! Perfect after bowling</span>
     </div>
+    <div class="ongoing-item teal">
+      <strong>Don't Tell Comedy at Broderick</strong>
+      <span>Thursdays · Washington Park · Secret comedy shows</span>
+    </div>
+  </div>
 
-    <footer>
-      <p><strong>Updated:</strong> April 8, 2026</p>
-      <p>300+ events from April through November · Summit FC season · All major Denver venues</p>
-      <p><strong>Note:</strong> Curling and bowling seasons have ended (no more recurring events)</p>
-      
-      <div class="legend">
-        <div class="legend-item">
-          <div class="legend-color" style="background: linear-gradient(135deg, #fef5e7, #fdebd0); border: 2px solid #f39c12;"></div>
-          <span>Summit FC HOME (Season Tickets)</span>
-        </div>
-        <div class="legend-item">
-          <div class="legend-color" style="background: linear-gradient(135deg, #e8f4f8, #d6eaf3); border: 2px solid #3498db;"></div>
-          <span>Summit FC AWAY (Pub Watch)</span>
-        </div>
-        <div class="legend-item">
-          <div class="legend-color cat-top"></div>
-          <span>Top Priority</span>
-        </div>
-        <div class="legend-item">
-          <div class="legend-color cat-good"></div>
-          <span>Good Options</span>
-        </div>
-        <div class="legend-item">
-          <div class="legend-color cat
+  <div class="ongoing-group">
+    <div class="ongoing-group-title">🎡 Always Available</div>
+    <div class="ongoing-item">
+      <strong>Adams Mystery Playhouse</strong>
+      <span>Check calendar for Fri &amp; Sat 6pm shows</span>
+    </div>
+    <div class="ongoing-item">
+      <strong>Slick City Adult Night</strong>
+      <span>Lakewood · Check their calendar for adult nights</span>
+    </div>
+  </div>
 
+  <div class="ongoing-group">
+    <div class="ongoing-group-title">🎨 Monthly</div>
+    <div class="ongoing-item rose">
+      <strong>First Fridays</strong>
+      <span>Monthly on the 1st Friday · Santa Fe Art District, RiNo, Golden Triangle</span>
+    </div>
+    <div class="ongoing-item">
+      <strong>Second Saturday Art Walk</strong>
+      <span>Monthly on the 2nd Saturday · Cherry Creek North</span>
+    </div>
+    <div class="ongoing-item">
+      <strong>Sundays on Santa Fe</strong>
+      <span>Monthly on the last Sunday · Santa Fe Art District gallery crawl · free</span>
+    </div>
+  </div>
+
+  <div class="ongoing-group">
+    <div class="ongoing-group-title">☀️ Summer Series</div>
+    <div class="ongoing-item teal">
+      <strong>City Park Jazz (40th Season!)</strong>
+      <span>Free summer jazz series on a mobile stage · select Sundays June–Aug</span>
+    </div>
+    <div class="ongoing-item">
+      <strong>Levitt Pavilion Free Concerts</strong>
+      <span>Free outdoor music · Lettuce, Andy Frasco, Rainbow Girls, Black Uhuru + more · check schedule</span>
+    </div>
+    <div class="ongoing-item">
+      <strong>Violins, Vino &amp; Vinyasa Yoga</strong>
+      <span>Select dates May–Sept · Denver Botanic Gardens · 6:30–8:30pm</span>
+    </div>
+    <div class="ongoing-item">
+      <strong>Japanese Tea Ceremony</strong>
+      <span>Select Saturdays May–Sept · Shofu-en Japanese Garden · Denver Botanic Gardens</span>
+    </div>
+    <div class="ongoing-item">
+      <strong>88 Drive-In Theatre (50th Season!)</strong>
+      <span>Open for the season · 50th anniversary year</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .container -->
+
+<footer>
+  <div class="header-stripe"></div>
+  <strong>Updated:</strong> April 21, 2026 &nbsp;·&nbsp; 
+  178 events · April through October &nbsp;·&nbsp; 
+  Summit FC home + away games flagged &nbsp;·&nbsp; 
+  FIFA World Cup 2026 watch parties at Sie FilmCenter (2510 E Colfax Ave)
+  <br><br>
+  <strong>Memberships active:</strong> MCA · DAM · Denver Museum of Nature &amp; Science · Summit FC Season Tickets
+  <br>
+  <strong>Venue shorthand:</strong> Sie FilmCenter = Dairy Arts Center · HQ = HQ Denver · Oriental = The Oriental Theater
+</footer>
+
+</body>
+</html>
