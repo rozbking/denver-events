@@ -31,7 +31,7 @@
       background-color: var(--pampas);
       color: var(--brown-deep);
       line-height: 1.6;
-      background-image: 
+      background-image:
         radial-gradient(ellipse at 10% 20%, rgba(200,90,14,0.06) 0%, transparent 60%),
         radial-gradient(ellipse at 90% 80%, rgba(107,124,45,0.06) 0%, transparent 60%);
     }
@@ -182,6 +182,7 @@
       display: flex;
       align-items: baseline;
       gap: 16px;
+      flex-wrap: wrap;
     }
 
     .month-count {
@@ -209,11 +210,17 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .date-label .dow {
       color: var(--mushroom);
       font-weight: 400;
+    }
+
+    .date-group.today .date-label {
+      border-left-color: var(--burnt-orange);
+      color: var(--brick);
     }
 
     /* EVENT CARDS */
@@ -577,6 +584,43 @@
       margin-top: 2px;
     }
 
+    .closing-soon {
+      display: inline-block;
+      background: var(--brick);
+      color: var(--cream);
+      font-size: 0.62rem;
+      padding: 1px 7px;
+      border-radius: 10px;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* COMPACT TWO-COLUMN LIST for long-running runs */
+    .run-list {
+      column-count: 2;
+      column-gap: 28px;
+      font-size: 0.78rem;
+      color: var(--brown-deep);
+    }
+
+    .run-list div {
+      break-inside: avoid;
+      padding: 3px 0;
+      border-bottom: 1px dotted rgba(139,115,85,0.3);
+    }
+
+    .run-list em {
+      color: var(--mushroom);
+      font-style: normal;
+    }
+
+    @media (max-width: 700px) {
+      .run-list { column-count: 1; }
+    }
+
     /* FOOTER */
     footer {
       background: var(--brown-deep);
@@ -631,9 +675,9 @@
 <header>
   <div class="header-stripe"></div>
   <div class="header-inner">
-    <h1>Denver Events<br><span>May – October 2026</span></h1>
+    <h1>Denver Events<br><span>Sept 2026 – May 2027</span></h1>
     <div class="subtitle">⛰ Golden · Denver · The Front Range</div>
-    <div class="updated-tag">Updated June 15, 2026</div>
+    <div class="updated-tag">Updated September 10, 2026</div>
   </div>
 </header>
 
@@ -654,234 +698,430 @@
 <div class="container">
 
 <!-- ===================== SEPTEMBER 2026 ===================== -->
-<div class="section-divider"></div>
 <div class="month-block">
-  <div class="month-header">September 2026 <span class="month-count">from Aug 31 · Updated Today</span></div>
+  <div class="month-header">September 2026 <span class="month-count">from Sept 10 · refreshed today</span></div>
 
-  <div class="date-group">
-    <div class="date-label">August 31 <span class="dow">· Monday · TODAY</span></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🍺 Great American Beer Festival — Tickets On Sale</div><div class="event-venue">Colorado Convention Center · Denver</div><div class="event-note">Oct 2–4 · one of the largest beer festivals in the US · grab tickets now!</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 1 <span class="dow">· Tuesday</span></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Black Marble</div><div class="event-venue">The Federal Theatre</div><div class="event-note">8pm</div></div></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM Lecture: Holbein's Wit</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Hans Holbein the Younger · Renaissance naturalism</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 3 <span class="dow">· Thursday</span></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">First Friday Art Walk — Boulder</div><div class="event-venue">Downtown Boulder</div><div class="event-note">Sept 4</div></div></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">First Friday Art Walk — Santa Fe Art District</div><div class="event-venue">Santa Fe Dr · Denver</div><div class="event-note">Sept 4 · galleries open late</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Sweet Pill</div><div class="event-venue">The Oriental Theater</div><div class="event-note">$1 from every ticket supports Calling All Crows feminist work · 8pm</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 4 <span class="dow">· Friday</span></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">First Friday Art Walk — Boulder</div><div class="event-venue">Downtown Boulder</div></div></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">First Friday Art Walk — Santa Fe Art District</div><div class="event-venue">Santa Fe Dr · Denver</div><div class="event-note">Galleries open late · free</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 5 <span class="dow">· Saturday</span></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🍕 Colorado Pizza Festival</div><div class="event-venue">Longmont</div><div class="event-note">coloradopizzafestival.com</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Labor Day Lift Off</div><div class="event-venue">Colorado</div><div class="event-note">Sept 5–7</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 5–6 <span class="dow">· Labor Day Weekend</span></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rocky Mountain Bonsai Society 57th Annual Show</div><div class="event-venue">UMB Amphitheater tent · Denver Botanic Gardens</div><div class="event-note">100+ bonsai by accomplished artists &amp; beginners · included with admission</div></div></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Jennifer Price Bonsai Workshops &amp; Tree Critiques</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">Internationally known bonsai artist</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 6 <span class="dow">· Sunday</span></div>
-    <div class="event cat-summit-home"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC HOME — vs Gotham FC</div><div class="event-venue">Centennial Stadium · Centennial, CO</div><div class="event-note">12:00 PM · CBS / Paramount+</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 9 <span class="dow">· Wednesday</span></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">All Shall Perish — 20th Anniversary of "The Price Of Existence"</div><div class="event-venue">The Oriental Theater</div><div class="event-note">6:45pm</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 10–13 <span class="dow">· Thu–Sun</span></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">RMCI Curling Tournament</div><div class="event-venue">Denver Curling Club</div><div class="event-note">Registration opens Jun 1 · New coordinators this year</div></div></div>
+  <div class="date-group today">
+    <div class="date-label">September 10 <span class="dow">· Thursday · TODAY</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🥌 RMCI — Rocky Mountain Curling Invitational</div><div class="event-venue">Denver Curling Club · 14100 W 7th Ave, Golden</div><div class="event-note">Sept 10–13 · out-of-town guests all weekend · volunteers still needed for ice crew, bar, openers &amp; closers (SignUpGenius)</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">From Page to Screen: Nickel Boys — with director RaMell Ross</div><div class="event-venue">MCA Denver at the Holiday Theater</div><div class="event-note">Denver Public Library One Book One Denver · live in-person discussion</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Practical Magic 2 — Early Screening</div><div class="event-venue">Alamo Drafthouse Sloan's Lake</div><div class="event-note">With Confia Collective</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Colorado Remembers 9/11</div><div class="event-venue">Newman Center · University of Denver</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🌕 Harvest Moon Dinner — Friends of the Front Range Wildlife Refuges</div><div class="event-venue">Rocky Mountain Arsenal</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">In the Shadows</div><div class="event-venue">Union Hall</div><div class="event-note">Curated by Italu Ramos Hernandez · on the phrase "living in the shadows"</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Washington Park</div><div class="event-venue">Secret location · Wash Park</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Best of Denver Comedy Showcase</div><div class="event-venue">Denver Comedy Lounge</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Did That Age Well? — Live Podcast</div><div class="event-venue">Dude IDK Studios</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">How Bizarre — Alternative Drag &amp; High Camp</div><div class="event-venue">Creepatorium</div><div class="event-note">Doors 7:30pm, show 8pm · $10</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">BUUDROW w/ The Trio Trio</div><div class="event-venue">Swallow Hill Music</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Hey Now Hey Now with My Wave</div><div class="event-venue">Buffalo Rose · Golden</div><div class="event-note">Walkable from home!</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Hunger Games Trivia</div><div class="event-venue">Fiction Beer Company</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 11 <span class="dow">· Friday</span></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lafayette Art Night Out</div><div class="event-venue">Lafayette, CO</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Long Peak Scottish Irish Highland Festival</div><div class="event-venue">Estes Park area</div><div class="event-note">Sept 11–13</div></div></div>
     <div class="event cat-summit-away"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC AWAY — at Angel City</div><div class="event-venue">BMO Stadium · Los Angeles, CA</div><div class="event-note">8:00 PM · Victory+</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Unsane</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">🩸 SAW The Musical: The Unauthorized Parody — OPENING NIGHT</div><div class="event-venue">The Bug Theatre · 3654 Navajo St</div><div class="event-note">7:30pm · direct from New York, 5 weeks only, runs through Oct 11 · explicit, 16+</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Beethoven Symphony No. 9 with Peter Oundjian</div><div class="event-venue">Boettcher Concert Hall</div><div class="event-note">Colorado Symphony · Sept 11–13</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Global Dance Festival 2026</div><div class="event-venue">National Western Center</div><div class="event-note">Sept 11–12 · Colorado's longest-running electronic music festival</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Chali 2na + Cut Chemist with Osha Renee</div><div class="event-venue">Levitt Pavilion</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Brandi Carlile</div><div class="event-venue">Denver</div><div class="event-note">Sept 11–13 · three nights</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Tame Impala</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Jack Harlow</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Unsane w/ Season to Risk + Arson Charge</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Also playing tonight: Kamelot · Dominique Fils-Aimé · Ingrid Andres · The Rush Tribute Project · The Sweet Lillies · Waylon Wyatt · Downey Chase &amp; Cole Scheifele</div><div class="event-venue">Various venues · Denver</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🌮 Tacos, Tequila &amp; Traditions</div><div class="event-venue">Hudson Gardens</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🥃 La Feria del Tequila y Mezcal 2026</div><div class="event-venue">Baldoria on the Water · Lakewood</div><div class="event-note">All-inclusive tasting festival</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Colorado Fall Home Show</div><div class="event-venue">Colorado Convention Center</div><div class="event-note">Sept 11–13</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">✨ Adult Nights at Bright Nights</div><div class="event-venue">Four Mile Historic Park</div><div class="event-note">21+ only · Denver's original lantern festival</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">🐕 Dalmatians on The Deck</div><div class="event-venue">Woodie Fisher Kitchen &amp; Bar</div></div></div>
+    <div class="event cat-wellness"><div class="event-dot"></div><div class="event-main"><div class="event-title">Garden Awe Walks</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">Guided mindfulness walk</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">ACE Footgolf Tournament 2026</div><div class="event-venue">Kennedy Golf Course</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">FocusPoint Photo &amp; Video Expo 2026</div><div class="event-venue">DU Welcome Center</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lafayette Art Night Out</div><div class="event-venue">Lafayette, CO</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Destiny of Desire — A Telenovela Play with Music</div><div class="event-venue">Wolf Theatre · DCPA</div><div class="event-note">Recurring weekly</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">The School of Badass Burlesque — Summer Student Showcase</div><div class="event-venue">Creepatorium</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rhinestone Cowgirls</div><div class="event-venue">Denver</div><div class="event-note">Three powerhouse singers · country classics &amp; contemporary</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Baker</div><div class="event-venue">Secret location · Baker</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Comedy tonight: John Caparulo (Night 1) · Dylan Carlino · Shaunak Godkhindi · Explicitly Funny · Friday Night Comedy · Bippity Boppity Boobs</div><div class="event-venue">Various venues · Denver</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Talia Tucker's Musical Bingo — Late Night Edition</div><div class="event-venue">Bierstadt Lagerhaus</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rooftop Wine Dinner with Kartveli Wines</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Wild Dreams Overnight</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Long's Peak Scottish Irish Highland Festival</div><div class="event-venue">Estes Park</div><div class="event-note">Sept 11–13</div></div></div>
   </div>
 
   <div class="date-group">
-    <div class="date-label">September 12 <span class="dow">· Saturday</span></div>
-    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Annual Friendship Powwow + FREE Day at Denver Art Museum</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Free admission · cultural celebration</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mactobertest in Aspen</div><div class="event-venue">Aspen</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Downtown Johnstown Fall Festival</div><div class="event-venue">Johnstown, CO</div></div></div>
-    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">5K on the Runway</div><div class="event-venue">Colorado</div></div></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Collective Roots Artisan Market</div><div class="event-venue">Colorado</div></div></div>
+    <div class="date-label">September 12 <span class="dow">· Saturday · ⭐ BIG DAY</span></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">🪘 Annual Friendship Powwow + FREE Day at the Denver Art Museum</div><div class="event-venue">Denver Art Museum</div><div class="event-note">SCFD Free Day · 10am–5pm · free general admission for everyone</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎪 The Olde Town Shindig</div><div class="event-venue">Olde Town Arvada</div><div class="event-note">Noon–8pm · zucchini races, horse-drawn hayrides, foam &amp; bubble dance party, two music stages, 50+ vendors</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎶 Sunnyside Music Festival — FREE (26th year)</div><div class="event-venue">Chaffee Park · 43rd &amp; Shoshone</div><div class="event-note">Free yoga from Better Buzz to start · Elle Michelle's Grateful Holler 12pm · Johnny &amp; The Mongrels 1:30 · Beasts of No Nation 3:00 · Other Brothers 4:30 · Gasoline Lollipops 6:00 · artisan market + kids activities</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Hi Points Festival in Five Points</div><div class="event-venue">Five Points</div><div class="event-note">Community celebration of music &amp; culture</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🍺 Highlands Oktoberfest</div><div class="event-venue">West 32nd Avenue</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🍺 TheBigWonderful Oktoberfest</div><div class="event-venue">Littleton</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Long Table Oktoberfest Block Party</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🇪🇹 Taste of Ethiopia</div><div class="event-venue">City Park Pavilion</div><div class="event-note">Sept 12–13</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Amor a la Mexicana Fest</div><div class="event-venue">St. Cajetan's</div><div class="event-note">All-inclusive tequila, mezcal &amp; Mexican food</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Dry Hop Fest</div><div class="event-venue">Champa Street Gym · hosted by The Phoenix</div><div class="event-note">Sober-friendly beer &amp; hop fest</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🥂 Denver BrunchFest</div><div class="event-venue">Denargo Market</div><div class="event-note">Presented by Natalie's Juice</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🍷 2026 Fall Colorado Wine Walk</div><div class="event-venue">Dairy Block</div><div class="event-note">7–10pm · VIP from 6pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">First Act — DPAC Season Kickoff</div><div class="event-venue">Denver Performing Arts Complex</div><div class="event-note">All the resident companies in one place</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Demo Artist — Hana Kim</div><div class="event-venue">Denver Art Museum</div><div class="event-note">12–3pm · included with admission (free today!)</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Maker Mornings: Cyanotypes and Printmaking · Model Car Make and Take · Children &amp; Family Workshop · Low Sensory Morning</div><div class="event-venue">Museums around Denver</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Collective Roots Artisan Market · Market at the Center</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">🐶 6th Annual Day with the Dogs Fair &amp; Rescue Event</div><div class="event-venue">Bill Goodspeed Happy Tails Dog Park · Northglenn</div><div class="event-note">Featuring puppy yoga</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Green Flags Only: A Denver Singles Event + Coat Drive</div><div class="event-venue">Number Thirty Eight</div></div></div>
+    <div class="event cat-wellness"><div class="event-dot"></div><div class="event-main"><div class="event-title">Runs &amp; yoga: Totally Rad 80s 5K (New Image, Wheat Ridge) · RiNo 5K + Larimer Mile · 5K on the Runway · Sugar We're Flowin' Down: 2000s Emo Yoga · Terrace Vinyasa x CorePower · Yoga on the Lawn</div><div class="event-venue">Across Denver</div></div></div>
+    <div class="event cat-soccer-wc"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ Colorado Rapids vs. CF Montréal</div><div class="event-venue">Dick's Sporting Goods Park</div><div class="event-note">30 years of Colorado soccer · discounted tickets</div></div></div>
     <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Steve Hofstetter</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Queers</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Five Points</div><div class="event-venue">Secret location · Five Points</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">More comedy: Jeff Allen · John Caparulo (Night 2) · Dylan Carlino · Questionable Advice · Saturday Early Show</div><div class="event-venue">Various venues · Denver</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical — two shows</div><div class="event-venue">The Bug Theatre</div><div class="event-note">5:00pm and 8:30pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Common Memory Presents: House Roots — A Collective Collage in Motion</div><div class="event-venue">Creepatorium</div><div class="event-note">7pm · bodies in motion set to deep house</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Queers w/ Better Than Dead, King Rat, All Waffle Trick</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rob Zombie &amp; Marilyn Manson · Brandon Flowers · Pond · Meltt · ANALUNA · Halle Tomlinson · Cool Vibes Reggae Fest · Blassphemy! A Metal Go-Go Burlesque Show</div><div class="event-venue">Various venues · Denver</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Golden Hours Music Festival · Jams in Chees IV · Hangin' N Slangin' · Woods Boss Block Party 2026</div><div class="event-venue">Around town</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Fiction Beer Company 12th Anniversary Party · The Fast Lane: Race Day at Cooper Lounge · Doll &amp; Dollhouse Miniatures Fall Show (12–13)</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mactoberfest in Aspen · Downtown Johnstown Fall Festival</div><div class="event-venue">Day trips</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 13 <span class="dow">· Sunday</span></div>
     <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Park Hill Fall Arts Festival</div><div class="event-venue">Park Hill · Denver</div><div class="event-note">Sept 13–14</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mad Caddies</div><div class="event-venue">The Federal Theatre</div><div class="event-note">8pm</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Kelela — New Avatar Live</div><div class="event-venue">Gothic Theatre</div><div class="event-note">Genre-defying · New Avatar era</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Zine Fest 2026</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pasar Southeast Asia</div><div class="event-venue">Denver</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pedro Gonzalez</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Doors 6:30, show 7pm · Colombian-American comedian, first Latino immigrant to perform on Colbert</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Crashing Out Live — news comedy podcast</div><div class="event-venue">Paramount Theatre</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Sam Adams · Winston Hodges</div><div class="event-venue">Denver comedy clubs</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">1pm matinee</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Taco Town — CLOSING PERFORMANCE</div><div class="event-venue">Miners Alley Performing Arts Center · Golden</div><div class="event-note">Last chance · playwright Luke Sorge plays Dustin for the final five shows</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Film CO150: Things to Do in Denver When You're Dead (1995)</div><div class="event-venue">Holiday Theater</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Historic Elitch Theatre Family Film Series: Coco</div><div class="event-venue">Historic Elitch Theatre</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Tiny Humans + Battle Pussy + Frog Team</div><div class="event-venue">HQ Denver</div><div class="event-note">3pm matinee</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Violent Femmes · Mad Caddies (Federal, 8pm) · Kelela — New Avatar Live (Gothic) · Medusa's Curse: Cabaret &amp; Riah Album Release</div><div class="event-venue">Various venues · Denver</div></div></div>
+    <div class="event cat-wellness"><div class="event-dot"></div><div class="event-main"><div class="event-title">🦈 Yoga at the Downtown Aquarium</div><div class="event-venue">Downtown Aquarium</div><div class="event-note">Monthly on the 2nd Sunday · inside the Shark Tank</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Grill &amp; Chill BBQ — 8 Years of Sake Anniversary</div><div class="event-venue">Denver</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">September 15 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Mindful Looking</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Arcimboldo's Summer and Autumn, to mark the change of seasons · monthly on Tuesdays</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 16 <span class="dow">· Wednesday</span></div>
     <div class="event cat-summit-home"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC HOME — vs Bay FC</div><div class="event-venue">Centennial Stadium · Centennial, CO</div><div class="event-note">7:30 PM · Victory+</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Shins</div><div class="event-venue">Ball Arena · Denver</div><div class="event-note">Part of Weezer show</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 17–18 <span class="dow">· Thu–Fri</span></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Science + Art Symposium: The Nature of Health</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">Artists, scientists, health practitioners &amp; cultural leaders examine health as interconnected system</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 18 <span class="dow">· Friday</span></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">RARE Steak Fest</div><div class="event-venue">Denver</div><div class="event-note">Sept 18 · check link in @emilyyyybuchtel bio for discount code</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Chile and Frijoles Festival</div><div class="event-venue">Colorado</div><div class="event-note">Sept 18–20</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pirate Festival</div><div class="event-venue">Colorado</div><div class="event-note">Sept 18–19</div></div></div>
-    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Breck Film Fest</div><div class="event-venue">Breckenridge</div><div class="event-note">Sept 18–21</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pinhead Circus</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Movie Night with Adam and Rory and Ben</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Doors 7pm, show 7:30 · Cayton-Holland, Scovel &amp; Roy talk over a mystery movie · always sells out</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">MCA Side Quest: Cross-Stitch with Fruit Salad Studio</div><div class="event-venue">MCA Fries Building</div><div class="event-note">Drop-in crafts, free with admission · MCA Café &amp; Bar</div></div></div>
+    <div class="event cat-wellness"><div class="event-dot"></div><div class="event-main"><div class="event-title">Summer Nights: Sunset Yoga with Silent Disco</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">All levels vinyasa</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Shins</div><div class="event-venue">Ball Arena · Denver</div><div class="event-note">Part of the Weezer show</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">📺 South America — Season 29 Premiere</div><div class="event-venue">At home</div><div class="event-note">South Park returns under its new name</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 17 <span class="dow">· Thursday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Science + Art Symposium: The Nature of Health</div><div class="event-venue">Denver Botanic Gardens</div><div class="event-note">Sept 17–18 · artists, scientists, health practitioners &amp; cultural leaders on health as an interconnected system</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Emerging Filmmakers Project</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Doors 6:30, show 7pm · Colorado indie film since 2002 · free Ratio beer (21+) · tickets at door only</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">VAHNA Motorcycle Film Festival — Denver</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm · top 10 films of the national tour</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pretty Boy Floyd</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Washington Park</div><div class="event-venue">Secret location · Wash Park</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">September 18 <span class="dow">· Friday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🥩 RARE Steak Fest</div><div class="event-venue">Denver</div><div class="event-note">Check @emilyyyybuchtel bio for the discount code</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Chile and Frijoles Festival</div><div class="event-venue">Pueblo</div><div class="event-note">Sept 18–20</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🏴‍☠️ Pirate Festival</div><div class="event-venue">Colorado</div><div class="event-note">Sept 18–19</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Breck Film Fest</div><div class="event-venue">Breckenridge</div><div class="event-note">Sept 18–21</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SHREK: The Drag Show</div><div class="event-venue">MCA Denver at the Holiday Theater</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lusine with Headnod, Mr. Lang</div><div class="event-venue">Ophelia's Electric Soapbox</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pinhead Circus</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Demo Artist — Hana Kim</div><div class="event-venue">Denver Art Museum</div><div class="event-note">12–3pm · included with admission</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — Overland</div><div class="event-venue">Secret location · Overland</div><div class="event-note">8pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 19 <span class="dow">· Saturday</span></div>
     <div class="event cat-summit-home"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC HOME — vs Seattle Reign</div><div class="event-venue">Centennial Stadium · Centennial, CO</div><div class="event-note">6:45 PM · ION</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Evergreen Oktoberfest</div><div class="event-venue">Evergreen</div></div></div>
-    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Early Bird Club Event</div><div class="event-venue">Boulder</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🥌 Denver Curling Club — Member Welcome Event</div><div class="event-venue">Denver Curling Club · Golden</div><div class="event-note">4–7pm · season kick-off, practice ice, gear swap, snacks, meet the board &amp; volunteer committees</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🍺 Evergreen Oktoberfest</div><div class="event-venue">Evergreen</div></div></div>
     <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Floral Design — The Art of Living Jewelry</div><div class="event-venue">Denver Art Museum</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Early Bird Club Event</div><div class="event-venue">Boulder</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lola Black — 15 Years of Borracho</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">All 80s Alternative Night with DJ Eli</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm–1:30am · all-vinyl set</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical — two shows</div><div class="event-venue">The Bug Theatre</div><div class="event-note">5:00pm and 8:30pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Don't Tell Comedy — West Highland</div><div class="event-venue">Secret location · West Highland</div><div class="event-note">8pm</div></div></div>
   </div>
 
   <div class="date-group">
-    <div class="date-label">September 24–27 <span class="dow">· Thu–Sun</span></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Telluride Autumn Classic</div><div class="event-venue">Telluride</div><div class="event-note">Sept 24–27 · day trip!</div></div></div>
+    <div class="date-label">September 20 <span class="dow">· Sunday</span></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">HQ Rock N' Roll Garage Sale</div><div class="event-venue">HQ Denver</div><div class="event-note">12pm · FREE · vending info: 4130management@gmail.com</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Market in the Park-et</div><div class="event-venue">City Park</div><div class="event-note">150+ Denver small businesses</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Popstalgia</div><div class="event-venue">The Oriental Theater</div><div class="event-note">5pm · pop favorites by Denver musicians, singers, dancers &amp; aerialists · hosted by Smitty of 93.3</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Film CO150: BlacKkKlansman (2018)</div><div class="event-venue">Holiday Theater</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">1pm matinee</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Tangled Self — FINAL DAY</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Closes today</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">September 22 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAWG Immigration Meeting</div><div class="event-venue">Table Public House · Denver</div><div class="event-note">6:30–8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">September 23 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Movie Night on the Block</div><div class="event-venue">Larimer Square</div><div class="event-note">Outdoor screening</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7:30pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 24 <span class="dow">· Thursday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Telluride Autumn Classic</div><div class="event-venue">Telluride</div><div class="event-note">Sept 24–27 · day trip!</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">MCA: Contemporary Circles Summer Exhibitions Curator Tour</div><div class="event-venue">MCA Fries Building</div><div class="event-note">6pm · private curator-led tour for Contemporary Circles members</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">EXPOSED [storytelling]</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7:30pm · an experiment in radical honesty as told by your community</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Brian Fallon &amp; The Painkillers</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">September 25–27 <span class="dow">· Thu–Sat</span></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Breckenridge Oktoberfest</div><div class="event-venue">Breckenridge</div><div class="event-note">Sept 25–27 · day trip!</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">La Junta Tarantula Fest</div><div class="event-venue">La Junta, CO</div><div class="event-note">Sept 25–26 · tarantula migration season · quirky Colorado!</div></div></div>
-    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pinners Conference</div><div class="event-venue">Colorado</div><div class="event-note">Sept 25–26</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Briggs + Potato Pirates</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-mixed-taste"><div class="event-dot"></div><div class="event-main"><div class="event-title">🧠 Anthropology Through Science Fiction: What Imagined Worlds Reveal About Being Human</div><div class="event-venue">~20 mi from Golden</div><div class="event-note">7pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 25 <span class="dow">· Friday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🍺 Breckenridge Oktoberfest</div><div class="event-venue">Breckenridge</div><div class="event-note">Sept 25–27 · day trip!</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🕷️ La Junta Tarantula Fest</div><div class="event-venue">La Junta, CO</div><div class="event-note">Sept 25–26 · tarantula migration season · quirky Colorado!</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pinners Conference</div><div class="event-venue">Colorado</div><div class="event-note">Sept 25–26</div></div></div>
+    <div class="event cat-mixed-taste"><div class="event-dot"></div><div class="event-main"><div class="event-title">🧠 Nerd Nite</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7pm · three experts, 20 minutes each, with beer. Discovery Channel but live</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">DPL: Meet Author Colson Whitehead — One Book One Denver Author Talk</div><div class="event-venue">MCA Denver at the Holiday Theater</div><div class="event-note">Culminating event of the 2026 One Book One Denver season</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Room — late night with audience participation</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Doors 10:30, show 11pm · bring spoons and footballs, no glitter</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Hail The Sun</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Trash — A Tribute to Garbage</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Down Under — A Burlesque Show</div><div class="event-venue">HQ Denver</div><div class="event-note">6:30pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 26 <span class="dow">· Saturday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Everyday Objects, Extraordinary Stories — A Conversation with Dung Ngo</div><div class="event-venue">Denver Art Museum</div><div class="event-note">11am · ticketed, free for students</div></div></div>
     <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Firefly Handmade Market</div><div class="event-venue">Denver</div><div class="event-note">Sept 26–27</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Taste of Fort Collins</div><div class="event-venue">Fort Collins</div><div class="event-note">Sept 26–27</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Autumn Gold Festival</div><div class="event-venue">Estes Park</div><div class="event-note">Sept 26–27</div></div></div>
     <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Oktoberfest</div><div class="event-venue">Denver</div><div class="event-note">Sept 18–20 &amp; 25–27 · two weekends!</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Morrison Ciderfest</div><div class="event-venue">Morrison</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Taste of Fort Collins · Autumn Gold Festival (Estes Park) · Morrison Ciderfest</div><div class="event-venue">Day trips</div><div class="event-note">Sept 26–27</div></div></div>
     <div class="event cat-summit-away"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC AWAY — at Kansas City Current</div><div class="event-venue">CPKC Stadium · Kansas City, MO</div><div class="event-note">10:30 AM · CBS / Paramount+</div></div></div>
     <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🌕 Full Moon Paddle</div><div class="event-venue">Boulder Reservoir &amp; Cherry Creek Reservoir</div><div class="event-note">Rocky Mtn Paddleboard · book ahead!</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Grawlix — with headliner Dave Ross and Chris Walsh</div><div class="event-venue">The Bug Theatre</div><div class="event-note">8pm · Denver's premiere alt-comedy show</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">WEIRD THEATER / OPEN SCREEN NIGHT — 3 Year Anniversary</div><div class="event-venue">Wolf Luv Studios · Denver</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">3pm</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Emarosa</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Dad Rock Night — 2000s Rock Tribute</div><div class="event-venue">The Oriental Theater</div><div class="event-note">Presented by Council Hill · 8pm</div></div></div>
   </div>
 
   <div class="date-group">
-    <div class="date-label">September 27–28 <span class="dow">· Sat–Sun</span></div>
+    <div class="date-label">September 27 <span class="dow">· Sunday</span></div>
     <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">Evergreen Elk and Art Festival</div><div class="event-venue">Evergreen</div><div class="event-note">Sept 27–28</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Film CO150: Red Dawn (1984)</div><div class="event-venue">Holiday Theater</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">1pm matinee</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Aren't We Amphibians</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">September 28 <span class="dow">· Monday</span></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Freak Train</div><div class="event-venue">The Bug Theatre</div><div class="event-note">8pm · 12 brave souls, 5 minutes each, whatever they want · tickets at door only</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">September 29 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Bring Them Home — Special Screening</div><div class="event-venue">Denver Art Museum · Sharp Auditorium</div><div class="event-note">6pm · restoring buffalo, land and culture to the Blackfeet community · narrated by Lily Gladstone</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Oldest Profession — Yeah No Yeah Productions</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7:30pm · 10,000 years of history from a sex worker's perspective</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">AEG Presents Paula Cole — THIS FIRE: 30</div><div class="event-venue">MCA Denver at the Holiday Theater</div><div class="event-note">30th anniversary tour for This Fire</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Portrayal of Guilt</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lauren Sanderson — Come Say Sum Tour</div><div class="event-venue">Meow Wolf</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">☕ National Coffee Day Sale — 20% off coffee &amp; mugs</div><div class="event-venue">Denver Art Museum Shops</div></div></div>
   </div>
 
+  <div class="date-group">
+    <div class="date-label">September 30 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎿 Teton Gravity Research: Actually, It Is Rocket Science</div><div class="event-venue">The Oriental Theater</div><div class="event-note">6:30pm · 31st annual ski &amp; snowboard film · also Oct 1</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Revocation</div><div class="event-venue">HQ Denver</div><div class="event-note">6:45pm</div></div></div>
+  </div>
 </div>
 
-<!-- ===================== OCTOBER – NOVEMBER 2026 ===================== -->
+<!-- ===================== OCTOBER 2026 ===================== -->
 <div class="section-divider"></div>
 <div class="month-block">
-  <div class="month-header">October – November 2026</div>
+  <div class="month-header">October 2026 <span class="month-count">ski film season + DIVA opens</span></div>
+
+  <div class="date-group">
+    <div class="date-label">October 1 <span class="dow">· Thursday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎿 Teton Gravity Research: Actually, It Is Rocket Science</div><div class="event-venue">The Oriental Theater</div><div class="event-note">6:30pm · second night</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Constellation First Light</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm · deep sultry rhythms, consent-forward floor, curated vendor lounge</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 2 <span class="dow">· Friday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🤼 The Bierhalle Brawl — Live Pro Wrestling</div><div class="event-venue">Bierstadt Lagerhaus · Denver</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">💀 El Día de Los Muertos Altars</div><div class="event-venue">Good Practice · Denver</div><div class="event-note">7–9pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Lawrence Arms</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Cheap Perfume — 10th Anniversary of "Nailed It"</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 3 <span class="dow">· Saturday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🌎 Denver International Festival</div><div class="event-venue">Denver</div><div class="event-note">Colorado's largest celebration of food + music + art from around the world</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Curator Conversation — The Making of DIVA</div><div class="event-venue">Denver Art Museum</div><div class="event-note">11am · ticketed, free for students</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">MCA: Pride Flag Workshop with Steven Frost</div><div class="event-venue">MCA Fries Building</div><div class="event-note">With the exhibiting artist</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">80's vs. 90's Night</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Buzz Kull + Kontravoid</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">5pm</div></div></div>
+  </div>
 
   <div class="date-group">
     <div class="date-label">October 4 <span class="dow">· Sunday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">💎 DIVA — OPENING DAY</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Fashion and legacy of Cher, Dolly Parton, Lady Gaga, Prince, Rihanna, Taylor Swift · DAM is the exclusive US venue</div></div></div>
     <div class="event cat-summit-away"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC AWAY — at Chicago Stars</div><div class="event-venue">Northwestern Medicine Field · Evanston, IL</div><div class="event-note">2:00 PM · CBS Sports</div></div></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Everyday Objects, Extraordinary Stories — Dung Ngo conversation</div><div class="event-venue">Denver Art Museum</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Sammy Obeid Live!</div><div class="event-venue">The Oriental Theater</div><div class="event-note">5pm</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">Denver Film CO150: True Grit (1969)</div><div class="event-venue">Holiday Theater</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">1pm matinee</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">October 6 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Drop-In Drawing with Anna Kaye</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Monthly on Tuesdays</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Buzzcocks</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
   </div>
 
   <div class="date-group">
+    <div class="date-label">October 7 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Movie Night with Adam and Rory and Ben</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Las Alucines</div><div class="event-venue">Paramount Theatre</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 8 <span class="dow">· Thursday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎿 The Way Out — Matchstick Productions</div><div class="event-venue">The Oriental Theater</div><div class="event-note">6:30pm · 34th annual ski film · Alaskan spines, Japanese powder, Swiss villages</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 9 <span class="dow">· Friday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎃 Pumpkin Festival at Chatfield Farms — opens</div><div class="event-venue">Denver Botanic Gardens at Chatfield Farms</div><div class="event-note">Recurring daily through October</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🍷 Wine Pairing Dinner Series at The Ponti</div><div class="event-venue">The Ponti · Denver Art Museum</div><div class="event-note">Four courses with pairings explained after each</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lucha Libre &amp; Laughs: Fearful Symmetry</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm · pro wrestling + stand-up · Abadon, Effy, Anaya, Dark Sheik · hosted by Pollo Del Mar</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Number Twelve Looks Like You</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
     <div class="date-label">October 10 <span class="dow">· Saturday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎃 MCA Family Day — trick-or-treat for goodies and art</div><div class="event-venue">MCA Fries Building</div><div class="event-note">Three-hour drop-in · free for kids &amp; teens, regular admission for adults</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">HOUSE OF THE DEVIL</div><div class="event-venue">Wolf Luv Studios · Lakewood</div><div class="event-note">7:30–10pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Carnivale De Sensuale: Les Monstres — Night 2</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm · Halloween spectacular with The Flying Brain, Eros Sea, Poseidon</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical</div><div class="event-venue">The Bug Theatre</div><div class="event-note">5pm</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Opal In Sky</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Pink Fuzz</div><div class="event-venue">The Federal Theatre</div><div class="event-note">8pm</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rabbitology</div><div class="event-venue">Ophelia's Electric Soapbox · Denver</div><div class="event-note">Featuring Amelie Farren &amp; Lilith Max</div></div></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM Lecture: Rembrandt's 1634 Wedding Portraits</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Oct 13</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rabbitology</div><div class="event-venue">Ophelia's Electric Soapbox</div><div class="event-note">Featuring Amelie Farren &amp; Lilith Max</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">October 11 <span class="dow">· Sunday</span></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">SAW The Musical — FINAL PERFORMANCE</div><div class="event-venue">The Bug Theatre</div><div class="event-note">Closes today after 5 weeks</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Igor &amp; The Red Elvises</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
   </div>
 
   <div class="date-group">
+    <div class="date-label">October 13 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM Lecture: Rembrandt's 1634 Wedding Portraits of Marten Soolmans and Oopjen Coppit</div><div class="event-venue">Denver Art Museum</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">IHOW X Every Avenue</div><div class="event-venue">HQ Denver</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎟️ Behind the Baton LIVE: DIVA — tickets on sale today</div><div class="event-venue">Denver Art Museum</div><div class="event-note">For the Nov 17 shows</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 14 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎿 Girl Winter Film Tour 2026</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm · women-centric short ski films</div></div></div>
+  </div>
+
+  <div class="date-group">
     <div class="date-label">October 15 <span class="dow">· Thursday · 🎉 MCA Gala</span></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎉 Luminocity Gala — MCA Denver Annual Celebration</div><div class="event-venue">MCA Denver</div><div class="event-note">Annual celebration of art, creativity &amp; community · surprise performances · culinary magic</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎉 Luminocity Gala — MCA Denver Annual Celebration</div><div class="event-venue">MCA Denver</div><div class="event-note">Surprise performances · culinary magic</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">French Police</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 16 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Mia Asano</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm · LA electric violinist, classical training meets alternative</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">October 17 <span class="dow">· Saturday</span></div>
     <div class="event cat-summit-home"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC HOME — vs Angel City</div><div class="event-venue">Centennial Stadium · Centennial, CO</div><div class="event-note">6:45 PM · ION</div></div></div>
-    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Two D*kes and a Mic: Soaking Wet Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">McKenzie Goodwin &amp; Rachel Scanlon · weekly comedy podcast touring live · 8pm</div></div></div>
-    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Textiles — Say It in Soft Sculpture + Papercraft: Coptic Stitch Miniature Books</div><div class="event-venue">Denver Art Museum</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Two D*kes and a Mic: Soaking Wet Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm · McKenzie Goodwin &amp; Rachel Scanlon</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Say It in Soft Sculpture + Coptic Stitch Miniature Books</div><div class="event-venue">Denver Art Museum</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Crown Magnetar + To The Grave</div><div class="event-venue">HQ Denver</div><div class="event-note">6:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 18 <span class="dow">· Sunday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎿 Quality Ski Time Film Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Despise The Sun + The Rising Plague</div><div class="event-venue">HQ Denver</div><div class="event-note">3pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 20 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">MCA: Educator Night 2026</div><div class="event-venue">Museum of Contemporary Art Denver</div><div class="event-note">5–7pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM Logan Lecture: A Conversation with David Huffman</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Large-scale paintings blending social/political themes with abstract mark-making</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 21 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-community"><div class="event-dot"></div><div class="event-main"><div class="event-title">🥄 Spoon Carving — an introduction to greenwood handicraft</div><div class="event-venue">Good Practice · Denver</div><div class="event-note">6–9pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">October 22 <span class="dow">· Thursday</span></div>
-    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Daniel Sloss (comedy)</div><div class="event-venue">Paramount Theatre</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lords Of Acid</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-comedy"><div class="event-dot"></div><div class="event-main"><div class="event-title">Daniel Sloss</div><div class="event-venue">Paramount Theatre</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lords of Acid</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Son Rompe Pera</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">October 23 <span class="dow">· Friday</span></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">SiM — Hooman World Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">Japanese band · 7:30pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">25th Annual Mayer Center Symposium</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Oct 23 12:30–5pm · Oct 24 10am–5:30pm · Ancient and Colonial Americas</div></div></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🛼 Besterns Roller Derby Tournament</div><div class="event-venue">Rollerdome · Denver</div><div class="event-note">1pm · Rocky Mountain Roller Derby</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">SiM — Hooman World Tour</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Wicked Intentions — A Burlesque Show</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">House of Heavy</div><div class="event-venue">HQ Denver</div><div class="event-note">8:30pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">October 24 <span class="dow">· Saturday</span></div>
     <div class="event cat-summit-home"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC HOME — vs Racing Louisville</div><div class="event-venue">Centennial Stadium · Centennial, CO</div><div class="event-note">4:30 PM · ION</div></div></div>
     <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Clay Sculpting — Día de Muertos</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Sculpt your own red rock clay artwork</div></div></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">2026 HUMP! Film Festival — Fall Season</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm · independent filmmakers on intimacy, identity and connection</div></div></div>
+    <div class="event cat-theater"><div class="event-dot"></div><div class="event-main"><div class="event-title">Goosebumps and Grinds — A Burlesque Show</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 25 <span class="dow">· Sunday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Demon Hunter</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 27 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Mindful Looking Online</div><div class="event-venue">Online</div><div class="event-note">Slow down with a single work of art</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 29 <span class="dow">· Thursday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Waterparks</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">October 30 <span class="dow">· Friday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎃 DAM Untitled: Artist Takeover — SpooKiki Ball</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Featured artist Mother Valentino Flora</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">George Clanton</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">October 31 <span class="dow">· Saturday · 🎃 Halloween</span></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Wednesday 13</div><div class="event-venue">The Federal Theatre</div><div class="event-note">8pm · Halloween show!</div></div></div>
-  </div>
-
-  <div class="date-group">
-    <div class="date-label">November 1 <span class="dow">· Sunday</span></div>
-    <div class="event cat-summit-away"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC AWAY — at North Carolina Courage</div><div class="event-venue">First Horizon Stadium · Cary, NC</div><div class="event-note">3:00 PM · ESPN TBD</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Ho99o9 / N8NOFACE</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Blitzkid</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
   </div>
 </div>
 
@@ -891,19 +1131,92 @@
   <div class="month-header">November 2026</div>
 
   <div class="date-group">
-    <div class="date-label">November 1 <span class="dow">· Sunday (Federal Theatre)</span></div>
+    <div class="date-label">November 1 <span class="dow">· Sunday</span></div>
+    <div class="event cat-summit-away"><div class="event-dot"></div><div class="event-main"><div class="event-title">⚽ SUMMIT FC AWAY — at North Carolina Courage</div><div class="event-venue">First Horizon Stadium · Cary, NC</div><div class="event-note">3:00 PM · ESPN TBD</div></div></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Metalachi</div><div class="event-venue">The Federal Theatre</div><div class="event-note">8pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">November 3 <span class="dow">· Tuesday</span></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lilyisthatyou</div><div class="event-venue">Cervantes' Other Side · Denver</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">2026 Lanius Lecture: Remembering Mary C. Lanius</div><div class="event-venue">Denver Art Museum</div><div class="event-note">An evening honoring Professor Emeritus Mary C. Lanius (1931–2026)</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">2026 8TURN 2nd World Tour [8TURN TRACE]</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm · K-pop</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Lilyisthatyou</div><div class="event-venue">Cervantes' Other Side</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 5 <span class="dow">· Thursday</span></div>
+    <div class="event cat-film"><div class="event-dot"></div><div class="event-main"><div class="event-title">🧗 Reel Rock 20</div><div class="event-venue">The Oriental Theater</div><div class="event-note">6pm · 20th year · four world premieres featuring Janja Garnbret and Michaela Kiersch</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 6 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Stand Together Denver</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm · 90s-era Denver scene reunion</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Oso Oso</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">November 7 <span class="dow">· Saturday</span></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Margaret Glaspy</div><div class="event-venue">Ophelia's Electric Soapbox · Denver</div></div></div>
     <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: DIVA — The Art of Music (mixed-media workshop)</div><div class="event-venue">Denver Art Museum</div><div class="event-note">10:30am–2:30pm · also Nov 14</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Margaret Glaspy</div><div class="event-venue">Ophelia's Electric Soapbox</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Nekrogoblikon</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 13 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Gully Boys</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 14 <span class="dow">· Saturday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: The Diva as Cultural Revolutionary</div><div class="event-venue">Denver Art Museum</div><div class="event-note">2pm · ticketed, free for students</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Fear Factory</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 15 <span class="dow">· Sunday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">VentanA + Deadly Apples</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 17 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">Behind the Baton LIVE: DIVA</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Two showings, 3pm and 6:30pm · CPR Classical + DAM · tickets on sale Oct 13</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">An Evening with Tommy Castro and The Painkillers</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 18 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Kingdom of Giants</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 19 <span class="dow">· Thursday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Ok, Goodnight</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 20 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Book of Love</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Dark Hearts Disco</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 21 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Disco Revue</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm · from the musicians behind The Petty Nicks Experience · Studio 54 vibe</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 22 <span class="dow">· Sunday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">A Killer's Confession</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 23 <span class="dow">· Monday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Comeback Kid — Chosen Hell Tour</div><div class="event-venue">HQ Denver</div><div class="event-note">7pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">November 27 <span class="dow">· Friday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Van Zeppelin</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7:30pm</div></div></div>
   </div>
 
   <div class="date-group">
@@ -915,28 +1228,68 @@
 <!-- ===================== DECEMBER 2026 ===================== -->
 <div class="section-divider"></div>
 <div class="month-block">
-  <div class="date-group">
-    <div class="date-label">November 14 <span class="dow">· Saturday</span></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Fear Factory</div><div class="event-venue">The Oriental Theater</div><div class="event-note">7pm</div></div></div>
-  </div>
-
-</div>
-
-<!-- ===================== DECEMBER 2026 ===================== -->
-<div class="section-divider"></div>
-<div class="month-block">
   <div class="month-header">December 2026</div>
 
   <div class="date-group">
+    <div class="date-label">December 1 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Psycroptic</div><div class="event-venue">HQ Denver</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
     <div class="date-label">December 2 <span class="dow">· Wednesday</span></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Yaelokre with Ben Caplan</div><div class="event-venue">Cervantes' Other Side · Denver</div></div></div>
-    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rachel Chinouriri</div><div class="event-venue">Ball Arena · Denver</div><div class="event-note">Part of Gracie Abrams show</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Yaelokre with Ben Caplan</div><div class="event-venue">Cervantes' Other Side</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Rachel Chinouriri</div><div class="event-venue">Ball Arena · Denver</div><div class="event-note">Part of the Gracie Abrams show</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Exhumed</div><div class="event-venue">HQ Denver</div><div class="event-note">7:30pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">December 4 <span class="dow">· Friday</span></div>
+    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">🎄 A Drag Queen Christmas</div><div class="event-venue">Paramount Theatre</div><div class="event-note">Myki Meeks, Nina West, Crystal Methyd, Silky Ganache + more</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Daft Punk Night</div><div class="event-venue">HQ Denver</div><div class="event-note">9pm · immersive visuals, packed floor, all night</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">December 5 <span class="dow">· Saturday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Dread Crew of Oddwood</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">December 8 <span class="dow">· Tuesday</span></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Drop-In Drawing with Anna Kaye (Online)</div><div class="event-venue">Online</div><div class="event-note">Quarterly online drawing session</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Eyes Set To Kill</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">December 9 <span class="dow">· Wednesday</span></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">The Meteors</div><div class="event-venue">HQ Denver</div><div class="event-note">8pm</div></div></div>
   </div>
 
   <div class="date-group">
     <div class="date-label">December 31 <span class="dow">· Thursday · 🎆 NYE</span></div>
     <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Face To Face — 35th Anniversary NYE with Unwritten Law, Sack &amp; Record Thieves</div><div class="event-venue">The Oriental Theater</div><div class="event-note">8:30pm · punk rock to kick off 2027</div></div></div>
-    <div class="event cat-special"><div class="event-dot"></div><div class="event-main"><div class="event-title">A Drag Queen Christmas</div><div class="event-venue">Paramount Theatre</div><div class="event-note">Dec 4 · Myki Meeks, Nina West, Crystal Methyd, Silky Ganache + more</div></div></div>
+  </div>
+</div>
+
+<!-- ===================== 2027 ===================== -->
+<div class="section-divider"></div>
+<div class="month-block">
+  <div class="month-header">Early 2027 <span class="month-count">on sale now, worth the calendar hold</span></div>
+
+  <div class="date-group">
+    <div class="date-label">January 2027</div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: Rags to Rhinestones</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Jan 12 · two members of the Dolly Parton Archive on seven decades of her career</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM Logan Lecture: SunYoung Park and Laura Shill</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Jan 19 · in conversation with curator Rory Padeken</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">LA's Wasted Youth + The Freeze</div><div class="event-venue">HQ Denver</div><div class="event-note">Jan 29 · 6pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Guttermouth + Pulley</div><div class="event-venue">HQ Denver</div><div class="event-note">Jan 30 · 4:30pm</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Angry Samoans + M.D.C.</div><div class="event-venue">HQ Denver</div><div class="event-note">Jan 31 · 4pm</div></div></div>
+  </div>
+
+  <div class="date-group">
+    <div class="date-label">February – May 2027</div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM Logan Lecture: Ebony G. Patterson</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Feb 2 · with curator Miranda Lash</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM: From Study to Canvas — Jie Wei Zhou's Artistic Practice</div><div class="event-venue">Denver Art Museum</div><div class="event-note">Feb 9</div></div></div>
+    <div class="event cat-music"><div class="event-dot"></div><div class="event-main"><div class="event-title">Nervosa</div><div class="event-venue">HQ Denver</div><div class="event-note">Mar 8 · 6:45pm</div></div></div>
+    <div class="event cat-art"><div class="event-dot"></div><div class="event-main"><div class="event-title">DAM Logan Lecture: TT Takemoto</div><div class="event-venue">Denver Art Museum</div><div class="event-note">May 4 · experimental films on queer identities and the Asian American experience</div></div></div>
   </div>
 </div>
 
